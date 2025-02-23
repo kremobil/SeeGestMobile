@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:seegest/views/nav_bar_views/homepage_founded_posts.dart';
 import 'package:seegest/views/register_options.dart';
 import 'package:seegest/widgets/post.dart';
+import 'classes/colors.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -28,7 +30,11 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.orange, // Set the background color to orange
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: AppColors.primaryGradient,
+          ),
+        ),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
@@ -38,7 +44,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   backgroundImage: NetworkImage('https://example.com/profile.jpg'), // Replace with your profile image URL
                 ),
                 const SizedBox(width: 8), // Add some space between the image and the text
-                const Text('User Name'), // Replace with the user's name
+                const Text(
+                  'User Name', // Replace with the user's name
+                  style: TextStyle(color: Colors.white), // Set the text color to white
+                ),
               ],
             ),
             IconButton(
@@ -52,132 +61,41 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24.0), // Add 24px side padding
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                margin: const EdgeInsets.symmetric(vertical: 8.0), // Add 8px vertical margin
-                width: double.infinity, // Set the button width to 100%
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Define the action when the "Powrót" button is pressed
-                    Navigator.pop(context);
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    alignment: Alignment.centerLeft, // Align the content to the left
-                    padding: const EdgeInsets.symmetric(vertical: 8.0), // Add 8px vertical padding
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0), // Add 8px border radius
-                    ),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 16.0), // Move the content 16px to the right
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: const [
-                        Icon(Icons.arrow_back, color: Colors.black), // Add left arrow icon
-                        SizedBox(width: 8), // Add some space between the icon and the text
-                        Text('Powrót'),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              PostWidget(
-                profileImageUrl: 'https://example.com/profile.jpg',
-                userName: 'User Name',
-                time: '2h ago',
-                title: 'Post Title',
-                location: 'Location',
-                content: 'This is the main content of the post.',
-                tags: ['tag1', 'tag2', 'tag3'],
-              ),
-              PostWidget(
-                profileImageUrl: 'https://example.com/profile.jpg',
-                userName: 'User Name',
-                time: '2h ago',
-                title: 'Post Title',
-                location: 'Location',
-                content: 'This is the main content of the post. sdfgdfgsd sddfgsdfgdg fgsdfgdf sf ssgfgsdfg dfgdfg sdfgsdfg dfgsdfgsdf gdfg dfg dfg sdf dfgdf dfgdfgsdfg sdf  sdfgsdfgsdfg sdfg sdg dfdger gsddgdsgdfgsdrg  dgdfgd sgergdfgs gsrgsdfg sdgdsrgsdgfgsdrdf sdgrgdfgsrdgdfgsrg sdrfdbghjksfdghdfkjg dfgdfgjksdfgsd fgdfg dfgdfgdfgdfg  dfd dfgdfgdfg dfg dfkjghsdkjhdfhg dfkhg kdjfg s fgh s',
-                tags: ['tag1', 'tag2', 'tag3'],
-              ),
-              PostWidget(
-                profileImageUrl: 'https://example.com/profile.jpg',
-                userName: 'User Name',
-                time: '2h ago',
-                title: 'Post Title',
-                location: 'Location',
-                content: 'This is the main content of the post. sdfgdfgsd sddfgsdfgdg fgsdfgdf sf ssgfgsdfg dfgdfg sdfgsdfg dfgsdfgsdf gdfg dfg dfg sdf dfgdf dfgdfgsdfg sdf  sdfgsdfgsdfg sdfg sdg dfdger gsddgdsgdfgsdrg  dgdfgd sgergdfgs gsrgsdfg sdgdsrgsdgfgsdrdf sdgrgdfgsrdgdfgsrg sdrfdbghjksfdghdfkjg dfgdfgjksdfgsd fgdfg dfgdfgdfgdfg  dfd dfgdfgdfg dfg dfkjghsdkjhdfhg dfkhg kdjfg s fgh s',
-                tags: ['tag1', 'tag2', 'tag3'],
-              ),
-              PostWidget(
-                profileImageUrl: 'https://example.com/profile.jpg',
-                userName: 'User Name',
-                time: '2h ago',
-                title: 'Post Title',
-                location: 'Location',
-                content: 'This is the main content of the post. sdfgdfgsd sddfgsdfgdg fgsdfgdf sf ssgfgsdfg dfgdfg sdfgsdfg dfgsdfgsdf gdfg dfg dfg sdf dfgdf dfgdfgsdfg sdf  sdfgsdfgsdfg sdfg sdg dfdger gsddgdsgdfgsdrg  dgdfgd sgergdfgs gsrgsdfg sdgdsrgsdgfgsdrdf sdgrgdfgsrdgdfgsrg sdrfdbghjksfdghdfkjg dfgdfgjksdfgsd fgdfg dfgdfgdfgdfg  dfd dfgdfgdfg dfg dfkjghsdkjhdfhg dfkhg kdjfg s fgh s',
-                tags: ['tag1', 'tag2', 'tag3'],
-              ),
-              PostWidget(
-                profileImageUrl: 'https://example.com/profile.jpg',
-                userName: 'User Name',
-                time: '2h ago',
-                title: 'Post Title',
-                location: 'Location',
-                content: 'This is the main content of the post. sdfgdfgsd sddfgsdfgdg fgsdfgdf sf ssgfgsdfg dfgdfg sdfgsdfg dfgsdfgsdf gdfg dfg dfg sdf dfgdf dfgdfgsdfg sdf  sdfgsdfgsdfg sdfg sdg dfdger gsddgdsgdfgsdrg  dgdfgd sgergdfgs gsrgsdfg sdgdsrgsdgfgsdrdf sdgrgdfgsrdgdfgsrg sdrfdbghjksfdghdfkjg dfgdfgjksdfgsd fgdfg dfgdfgdfgdfg  dfd dfgdfgdfg dfg dfkjghsdkjhdfhg dfkhg kdjfg s fgh s',
-                tags: ['tag1', 'tag2', 'tag3'],
-              ),
-              PostWidget(
-                profileImageUrl: 'https://example.com/profile.jpg',
-                userName: 'User Name',
-                time: '2h ago',
-                title: 'Post Title',
-                location: 'Location',
-                content: 'This is the main content of the post. sdfgdfgsd sddfgsdfgdg fgsdfgdf sf ssgfgsdfg dfgdfg sdfgsdfg dfgsdfgsdf gdfg dfg dfg sdf dfgdf dfgdfgsdfg sdf  sdfgsdfgsdfg sdfg sdg dfdger gsddgdsgdfgsdrg  dgdfgd sgergdfgs gsrgsdfg sdgdsrgsdgfgsdrdf sdgrgdfgsrdgdfgsrg sdrfdbghjksfdghdfkjg dfgdfgjksdfgsd fgdfg dfgdfgdfgdfg  dfd dfgdfgdfg dfg dfkjghsdkjhdfhg dfkhg kdjfg s fgh s',
-                tags: ['tag1', 'tag2', 'tag3'],
-              ),
-              PostWidget(
-                profileImageUrl: 'https://example.com/profile.jpg',
-                userName: 'User Name',
-                time: '2h ago',
-                title: 'Post Title',
-                location: 'Location',
-                content: 'This is the main content of the post. sdfgdfgsd sddfgsdfgdg fgsdfgdf sf ssgfgsdfg dfgdfg sdfgsdfg dfgsdfgsdf gdfg dfg dfg sdf dfgdf dfgdfgsdfg sdf  sdfgsdfgsdfg sdfg sdg dfdger gsddgdsgdfgsdrg  dgdfgd sgergdfgs gsrgsdfg sdgdsrgsdgfgsdrdf sdgrgdfgsrdgdfgsrg sdrfdbghjksfdghdfkjg dfgdfgjksdfgsd fgdfg dfgdfgdfgdfg  dfd dfgdfgdfg dfg dfkjghsdkjhdfhg dfkhg kdjfg s fgh s',
-                tags: ['tag1', 'tag2', 'tag3'],
-              ),
-            ],
-          ),
-        ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.orange, // Set the background color to orange
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: _buildIcon(Icons.calendar_month, 0),
-            label: 'Strona głowna',
-          ),
-          BottomNavigationBarItem(
-            icon: _buildIcon(Icons.add, 1),
-            label: 'Dodaj',
-          ),
-          BottomNavigationBarItem(
-            icon: _buildIcon(Icons.map, 2),
-            label: 'Mapa',
-          ),
-          BottomNavigationBarItem(
-            icon: _buildIcon(Icons.help_outline, 3),
-            label: 'Pomoc',
-          ),
+      body: HomepageFoundedPosts(posts: [
+        PostWidget(profileImageUrl: 'aaaa', userName: 'aaaa', time: '21:37', title: 'tytuł', location: 'bromberg', content: 'serfgvjshrdjkvsdfvbsfd', tags: ['tag1', 'tag2']),
+        PostWidget(profileImageUrl: 'aaaa', userName: 'aaaa', time: '21:37', title: 'tytuł', location: 'bromberg', content: 'serfghjrsfthgeuiagvjshrdjkvsdfvbsfd', tags: ['tag1', 'tag2']),
         ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.white, // Set the selected item color to white
-        unselectedItemColor: Colors.white, // Set the unselected item color to white
-        onTap: _onItemTapped,
+      ),
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          gradient: AppColors.primaryGradient,
+        ),
+        child: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Colors.transparent, // Set the background color to transparent
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: _buildIcon(Icons.calendar_month, 0),
+              label: 'Strona głowna',
+            ),
+            BottomNavigationBarItem(
+              icon: _buildIcon(Icons.add, 1),
+              label: 'Dodaj',
+            ),
+            BottomNavigationBarItem(
+              icon: _buildIcon(Icons.map, 2),
+              label: 'Mapa',
+            ),
+            BottomNavigationBarItem(
+              icon: _buildIcon(Icons.help_outline, 3),
+              label: 'Pomoc',
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.white, // Set the selected item color to white
+          unselectedItemColor: Colors.white, // Set the unselected item color to white
+          onTap: _onItemTapped,
+        ),
       ),
     );
   }
@@ -197,3 +115,4 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+

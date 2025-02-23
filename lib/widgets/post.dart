@@ -36,7 +36,7 @@ class _PostWidgetState extends State<PostWidget> {
           color: Colors.white,
           boxShadow: [
             BoxShadow(
-              color: const Color.fromARGB(121, 80, 80, 80), // Add a shadow around the post
+              color: const Color.fromARGB(121, 107, 107, 107), // Add a shadow around the post
               spreadRadius: 2.0, // Spread the shadow by 2px
               blurRadius: 2.0, // Soften the shadow by 4px
               offset: const Offset(0, 4), // Offset the shadow by 2px
