@@ -127,7 +127,4 @@ class LoginView extends StatelessWidget {
 }
 
 
-
-
-//TODO: make it more responsive
 //TODO: find gogle icon

@@ -67,3 +67,11 @@ class HomepageFoundedPosts extends StatelessWidget {
     );
   }
 }
+
+
+
+//body: HomepageFoundedPosts(posts: [
+//   PostWidget(profileImageUrl: 'aaaa', userName: 'aaaa', time: '21:37', title: 'tytuł', location: 'bromberg', content: 'serfgvjshrdjkvsdfvbsfd', tags: ['tag1', 'tag2']),
+//   PostWidget(profileImageUrl: 'aaaa', userName: 'aaaa', time: '21:37', title: 'tytuł', location: 'bromberg', content: 'serfghjrsfthgeuiagvjshrdjkvsdfvbsfd', tags: ['tag1', 'tag2']),
+//   ],
+// ),

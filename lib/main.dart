@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:seegest/views/nav_bar_views/homepage_founded_posts.dart';
 import 'package:seegest/views/register_options.dart';
+import 'package:seegest/widgets/monthly_calendar.dart';
 import 'package:seegest/widgets/post.dart';
+import 'package:seegest/widgets/time_picker.dart'; // Import the TimePickerWidget
 import 'classes/colors.dart';
 
 void main() {
@@ -61,10 +63,17 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      body: HomepageFoundedPosts(posts: [
-        PostWidget(profileImageUrl: 'aaaa', userName: 'aaaa', time: '21:37', title: 'tytuł', location: 'bromberg', content: 'serfgvjshrdjkvsdfvbsfd', tags: ['tag1', 'tag2']),
-        PostWidget(profileImageUrl: 'aaaa', userName: 'aaaa', time: '21:37', title: 'tytuł', location: 'bromberg', content: 'serfghjrsfthgeuiagvjshrdjkvsdfvbsfd', tags: ['tag1', 'tag2']),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24.0), // Add horizontal padding
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              TimePickerWidget(), // Add the TimePickerWidget
+              const SizedBox(height: 32), // Add space between time picker and calendar
+              MonthlyCalendar(initialDate: DateTime.now()),
+            ],
+          ),
+        ),
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
@@ -115,4 +124,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
