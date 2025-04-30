@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:seegest/classes/colors.dart';
+import 'package:SeeGestMobileApp/classes/colors.dart';
 
 class MonthlyCalendar extends StatefulWidget {
   final DateTime initialDate;

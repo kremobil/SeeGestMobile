@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:seegest/widgets/custom_icon_button.dart';
-import 'package:seegest/widgets/custom_input.dart';
+import 'package:SeeGestMobileApp/widgets/custom_icon_button.dart';
+import 'package:SeeGestMobileApp/widgets/custom_input.dart';
 
 class RegisterFormView extends StatelessWidget {
   const RegisterFormView({
@@ -25,9 +25,7 @@ class RegisterFormView extends StatelessWidget {
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.red, width: 1.0), // 1px red border
                   ),
-                  child: Image.network(
-                    'https://picsum.photos/id/1/200/300', // Replace with your image URL
-                    height: 106, // Set the height of the image
+                  child: Image.asset("images/SeeGestLogo.png", // Replace with your image URL
                     width: 220,
                   ),
                 ),
@@ -55,8 +53,7 @@ class RegisterFormView extends StatelessWidget {
                             style: const TextStyle(color: Colors.blue), // Link text style
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
-                                // Define the action when the link is tapped
-                                print('Link tapped');
+                                Navigator.pushNamed(context, '/login'); // Navigate to the login page
                               },
                           ),
                         ],
@@ -76,7 +73,7 @@ class RegisterFormView extends StatelessWidget {
     
               CustomInput(labelText: 'Powtórz Hasło', hintText: 'Powtórz swoje hasło'),
     
-              CustomIconButton(text: 'Zarejestruj się', icon: Icons.app_registration_sharp),
+              CustomIconButton(text: 'Zarejestruj się', icon: Icons.app_registration_sharp, callback: () => {},),
             ],
           ),
         ),

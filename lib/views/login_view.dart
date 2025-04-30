@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:seegest/widgets/custom_icon_button.dart';
-import 'package:seegest/widgets/custom_input.dart';
+import 'package:SeeGestMobileApp/widgets/custom_icon_button.dart';
+import 'package:SeeGestMobileApp/widgets/custom_input.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({
@@ -24,9 +24,7 @@ class LoginView extends StatelessWidget {
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.red, width: 1.0), // 1px red border
                   ),
-                  child: Image.network(
-                    'https://picsum.photos/id/1/200/300', // Replace with your image URL
-                    height: 106, // Set the height of the image
+                  child: Image.asset("images/SeeGestLogo.png", // Replace with your image URL
                     width: 220,
                   ),
                 ),
@@ -54,8 +52,7 @@ class LoginView extends StatelessWidget {
                           style: const TextStyle(color: Colors.blue), // Link text style
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
-                              // Define the action when the link is tapped
-                              print('Link tapped');
+                                Navigator.pushNamed(context, '/register-options'); // Navigate to the register options page
                             },
                         ),
                       ],
@@ -113,11 +110,11 @@ class LoginView extends StatelessWidget {
           
           
               const SizedBox(height: 24), // Add vertical spacing
-              CustomIconButton(text: 'Zaloguj się', icon: Icons.login),
+              CustomIconButton(text: 'Zaloguj się', icon: Icons.login, callback: () => {},),
               const SizedBox(height: 48), // Add vertical spacing
-              CustomIconButton(text: 'Zaloguj się przez Facebook', icon: Icons.facebook),
+              CustomIconButton(text: 'Zaloguj się przez Facebook', icon: Icons.facebook, callback: () => {},),
               const SizedBox(height: 8), // Add vertical spacing
-              CustomIconButton(text: 'zaloguj się przez Google', icon: Icons.g_translate),
+              CustomIconButton(text: 'zaloguj się przez Google', icon: Icons.g_translate, callback: () => {},),
             ],
           ),
         ),

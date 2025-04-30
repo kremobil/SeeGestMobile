@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:seegest/classes/colors.dart';
-import 'package:seegest/widgets/post.dart';
+import 'package:SeeGestMobileApp/classes/colors.dart';
+import 'package:SeeGestMobileApp/widgets/post.dart';
 
 class HomepageFoundedPosts extends StatelessWidget {
   final List<PostWidget> posts;
