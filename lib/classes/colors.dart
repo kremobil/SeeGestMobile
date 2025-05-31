@@ -8,6 +8,7 @@ class AppColors {
     ],
     begin: Alignment.centerLeft,
     end: Alignment.centerRight,
+    
   );
   static const Color secondary = Colors.white;
   static const Color grey = Color(0xFF162968);

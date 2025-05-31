@@ -1,13 +1,16 @@
+import 'package:SeeGestMobileApp/classes/colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomInput extends StatelessWidget {
   final String labelText;
   final String hintText;
+  final TextEditingController? controller;
 
   const CustomInput({
     super.key,
     required this.labelText,
     required this.hintText,
+    this.controller
   });
 
   @override
@@ -25,18 +28,19 @@ class CustomInput extends StatelessWidget {
           ),
           const SizedBox(height: 4), // Add some space between label and input
           TextField(
+            controller: controller,
             decoration: InputDecoration(
               hintText: hintText, // Hint text inside the input
               contentPadding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 12.0), // Adjust vertical and horizontal padding
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8.0), // 8px border radius
                 borderSide: const BorderSide(
-                  color: Colors.black, // 1px black border
-                  width: 1.0,
+                  color: AppColors.grey, // 1px black border
+                  width: 3.0,
                 ),
               ),
             ),
-          ), // Input field
+          ),
         ],
       ),
     );

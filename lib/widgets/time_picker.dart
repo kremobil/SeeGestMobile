@@ -24,14 +24,10 @@ class _TimePickerWidgetState extends State<TimePickerWidget> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Text(
-          'Selected time: ${_selectedTime.format(context)}',
-          style: TextStyle(fontSize: 24),
-        ),
-        SizedBox(height: 16),
-        ElevatedButton(
+        ElevatedButton.icon(
           onPressed: () => _selectTime(context),
-          child: Text('Select Time'),
+          label: Text('Wybierz Godninę'),
+          icon: Icon(Icons.access_time),
         ),
       ],
     );

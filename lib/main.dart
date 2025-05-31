@@ -1,15 +1,15 @@
+import 'package:SeeGestMobileApp/firebase_options.dart';
 import 'package:SeeGestMobileApp/views/login_view.dart';
 import 'package:SeeGestMobileApp/views/nav_bar_views/nav_bar_wrapper.dart';
 import 'package:SeeGestMobileApp/views/register_form_view.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:SeeGestMobileApp/views/nav_bar_views/homepage_founded_posts.dart';
 import 'package:SeeGestMobileApp/views/register_options.dart';
-import 'package:SeeGestMobileApp/widgets/monthly_calendar.dart';
-import 'package:SeeGestMobileApp/widgets/post.dart';
-import 'package:SeeGestMobileApp/widgets/time_picker.dart'; // Import the TimePickerWidget
-import 'classes/colors.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // Ensure Flutter is initialized
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform); // Initialize Firebase
+
   runApp(MyApp());
 }
 

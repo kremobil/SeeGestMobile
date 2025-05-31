@@ -1,0 +1,2 @@
+C:/Users/kremo/Desktop/Programming/Flutter/SeeGestMobileApp/android/app/.cxx/Debug/52562b5b/x86/CMakeFiles/edit_cache.dir
+C:/Users/kremo/Desktop/Programming/Flutter/SeeGestMobileApp/android/app/.cxx/Debug/52562b5b/x86/CMakeFiles/rebuild_cache.dir
