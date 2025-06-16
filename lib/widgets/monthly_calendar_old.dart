@@ -12,7 +12,7 @@ class MonthlyCalendar extends StatefulWidget {
 
 class _MonthlyCalendarState extends State<MonthlyCalendar> {
   late DateTime _currentDate;
-  List<int> _selectedDays = [];
+  final List<int> _selectedDays = [];
 
   @override
   void initState() {

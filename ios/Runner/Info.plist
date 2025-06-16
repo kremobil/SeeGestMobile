@@ -45,5 +45,18 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
-</dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fbREDACTED</string>
+			</array>
+		</dict>
+	</array>
+	<key>FacebookAppID</key>
+	<string>REDACTED</string>
+	<key>FacebookDisplayName</key>
+	<string>SeeGest.com</string>
+	</dict>
 </plist>

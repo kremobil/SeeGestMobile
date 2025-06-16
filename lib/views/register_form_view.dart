@@ -78,6 +78,7 @@ class _RegisterFormViewState extends State<RegisterFormView> {
     if (RegExp(r'[^a-zA-Z0-9!@#$%^&*(),.?":{}|<>]').hasMatch(value)) {
       return 'Hasło nie może zawierać spacji ani innych znaków';
     }
+    return null;
   }
 
   @override
@@ -148,6 +149,7 @@ class _RegisterFormViewState extends State<RegisterFormView> {
                           if (value == null || value.isEmpty) {
                             return 'Proszę wpisać swoje imię';
                           }
+                          return null;
                         },
                         controller: _nameController,
                       ),
@@ -158,6 +160,7 @@ class _RegisterFormViewState extends State<RegisterFormView> {
                           if (value == null || value.isEmpty) {
                             return 'Proszę wpisać swoje imię';
                           }
+                          return null;
                         },
                         controller: _surnameController,
                       ),
@@ -173,6 +176,7 @@ class _RegisterFormViewState extends State<RegisterFormView> {
                               .hasMatch(value)) {
                             return 'Proszę wpisać poprawny adres e-mail';
                           }
+                          return null;
                         },
                         controller: _emailController,
                       ),
@@ -192,6 +196,7 @@ class _RegisterFormViewState extends State<RegisterFormView> {
                           if (value != _passwordController.text) {
                             return 'Hasła nie pasują do siebie';
                           }
+                          return null;
                         },
                         controller: _confirmPasswordController,
                       ),

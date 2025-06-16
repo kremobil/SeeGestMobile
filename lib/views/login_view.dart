@@ -83,7 +83,12 @@ class _LoginViewState extends State<LoginView> {
               CustomIconButton(
                 text: 'Zaloguj się przez Facebook',
                 icon: Icons.facebook,
-                callback: () => {},
+                callback: () async {
+                  bool loginSuccess = await UserController.loginWithFacebook(context);
+                  if (loginSuccess && context.mounted) {
+                    Navigator.pushNamed(context, '/home');
+                  }
+                },
               ),
               const SizedBox(height: 8), // Add vertical spacing
               CustomIconButton(
@@ -92,7 +97,7 @@ class _LoginViewState extends State<LoginView> {
                 callback: () async {
                   bool logginSuccess =
                       await UserController.loginWithGoogle(context);
-                  if (logginSuccess) {
+                  if (logginSuccess && context.mounted) {
                     Navigator.pushNamed(context, '/home');
                   }
                 },
@@ -106,6 +111,8 @@ class _LoginViewState extends State<LoginView> {
 }
 
 class LoginForm extends StatefulWidget {
+  const LoginForm({super.key});
+
   @override
   State<LoginForm> createState() => _LoginFormState();
 }
