@@ -1,24 +1,24 @@
 import 'package:SeeGestMobileApp/controllers/user_controller.dart';
-import 'package:SeeGestMobileApp/widgets/custom_form_input.dart';
+import 'package:SeeGestMobileApp/shared/styled_form_input.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:SeeGestMobileApp/widgets/custom_icon_button.dart';
-import 'package:SeeGestMobileApp/widgets/custom_input.dart';
+import 'package:SeeGestMobileApp/shared/styled_icon_button.dart';
+import 'package:SeeGestMobileApp/shared/styled_input.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({
     super.key,
   });
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +26,6 @@ class _LoginViewState extends State<LoginView> {
         padding: const EdgeInsets.symmetric(
             horizontal: 24.0), // Add horizontal padding
         child: SingleChildScrollView(
-          reverse: true, // Scroll the view in the opposite direction
           child: Column(
             //main column, entire view
             crossAxisAlignment:

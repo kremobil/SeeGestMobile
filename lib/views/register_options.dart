@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:SeeGestMobileApp/widgets/custom_icon_button.dart';
+import 'package:SeeGestMobileApp/shared/styled_icon_button.dart';
 
 class RegisterOptions extends StatelessWidget {
   const RegisterOptions({

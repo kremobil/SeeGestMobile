@@ -1,5 +1,5 @@
 import 'package:SeeGestMobileApp/firebase_options.dart';
-import 'package:SeeGestMobileApp/views/login_view.dart';
+import 'package:SeeGestMobileApp/screens/login/login_screen.dart';
 import 'package:SeeGestMobileApp/views/nav_bar_views/nav_bar_wrapper.dart';
 import 'package:SeeGestMobileApp/views/register_form_view.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -30,7 +30,7 @@ class _MyAppState extends State<MyApp> {
       initialRoute: loggedView ? '/home' : '/login',
       routes: {
         '/home': (context) => const HomePage(),
-        '/login': (context) => const LoginView(),
+        '/login': (context) => const LoginScreen(),
         '/register-options': (context) => const RegisterOptions(),
         '/register': (context) => const RegisterFormView(),
         // '/calendar': (context) => const MonthlyCalendar(), // Add the calendar route
