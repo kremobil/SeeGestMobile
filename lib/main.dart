@@ -1,10 +1,12 @@
 import 'package:SeeGestMobileApp/firebase_options.dart';
 import 'package:SeeGestMobileApp/screens/login/login_screen.dart';
+import 'package:SeeGestMobileApp/screens/password_reset/password_rest_sreenc.dart';
+import 'package:SeeGestMobileApp/seegest_theme.dart';
 import 'package:SeeGestMobileApp/views/nav_bar_views/nav_bar_wrapper.dart';
-import 'package:SeeGestMobileApp/views/register_form_view.dart';
+import 'package:SeeGestMobileApp/screens/register/register_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:SeeGestMobileApp/views/register_options.dart';
+import 'package:SeeGestMobileApp/screens/register_methods/register_methods_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Ensure Flutter is initialized
@@ -31,11 +33,13 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/home': (context) => const HomePage(),
         '/login': (context) => const LoginScreen(),
-        '/register-options': (context) => const RegisterOptions(),
-        '/register': (context) => const RegisterFormView(),
+        '/register-options': (context) => const RegisterMethodsScreen(),
+        '/register': (context) => const RegisterScreen(),
+        '/reset-password':  (context) => const PasswordRestScreen()
         // '/calendar': (context) => const MonthlyCalendar(), // Add the calendar route
         // '/timePicker': (context) => const TimePickerWidget(), // Add the time picker route
       },
+      theme: seegestTheme,
     );
   }
 }

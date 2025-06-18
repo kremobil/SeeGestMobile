@@ -12,9 +12,10 @@ class AppColors {
   static const Color whiteColor = Colors.white;
   static const Color mainColor = Color(0xFF162968);
   static const Color secondaryColor = Color(0xFF42617A);
+  static Color errorColor = Colors.red[700]!;
 }
 
-final seegestTheme = (
+final seegestTheme = ThemeData(
   colorScheme: ColorScheme.fromSeed(seedColor: AppColors.mainColor),
   scaffoldBackgroundColor: Colors.white,
   appBarTheme: const AppBarTheme(

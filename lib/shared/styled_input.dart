@@ -1,48 +1,192 @@
-import 'package:SeeGestMobileApp/classes/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:SeeGestMobileApp/seegest_theme.dart';
 
-class CustomInput extends StatelessWidget {
+// Normal input
+
+class StyledInput extends StatelessWidget {
   final String labelText;
   final String hintText;
   final TextEditingController? controller;
+  final Widget? additionalLabelWidget;
+  final bool obscureText;
 
-  const CustomInput({
-    super.key,
-    required this.labelText,
-    required this.hintText,
-    this.controller
-  });
+  const StyledInput(
+      {super.key,
+      required this.labelText,
+      required this.hintText,
+      this.controller,
+      this.additionalLabelWidget,
+      this.obscureText = false});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 16.0), // Add 8px bottom margin
-      child: Column(     //email input
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            labelText, // Label above the input
-            style: const TextStyle(
-              fontSize: 18.0, // Set font size to 16px
-            ),
-          ),
-          const SizedBox(height: 4), // Add some space between label and input
-          TextField(
-            controller: controller,
-            decoration: InputDecoration(
-              hintText: hintText, // Hint text inside the input
-              contentPadding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 12.0), // Adjust vertical and horizontal padding
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8.0), // 8px border radius
-                borderSide: const BorderSide(
-                  color: AppColors.grey, // 1px black border
-                  width: 3.0,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            StyledInputLabelText(labelText),
+            if (additionalLabelWidget != null) ...[
+              const Expanded(child: SizedBox()),
+              additionalLabelWidget!,
+            ]
+          ],
+        ),
+        const SizedBox(height: 4),
+        TextField(
+          controller: controller,
+          cursorColor: AppColors.mainColor,
+          obscureText: obscureText,
+          style: GoogleFonts.lato(
+              fontSize: 16,
+              fontWeight: FontWeight.normal,
+              color: AppColors.secondaryColor),
+          decoration: InputDecoration(
+              hintText: hintText,
+              hintStyle: GoogleFonts.lato().copyWith(
+                  fontSize: 16,
+                  fontWeight: FontWeight.normal,
+                  color: AppColors.mainColor), // Hint text inside the input
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
+              enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide:
+                      BorderSide(color: AppColors.mainColor, width: 1.5)),
+              focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(color: AppColors.mainColor, width: 2)),
+              focusedErrorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide:
+                      BorderSide(color: AppColors.errorColor, width: 1.5)),
+              errorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide:
+                      BorderSide(color: AppColors.errorColor, width: 1.5)),
+              errorStyle: GoogleFonts.lato().copyWith(
+                color: AppColors.errorColor,
+                fontSize: 12,
+                fontWeight: FontWeight.normal,
+              )),
+        ),
+      ],
+    );
+  }
+}
+
+// Form input
+
+class StyledFormInput extends StatelessWidget {
+  final String labelText;
+  final String hintText;
+  final TextEditingController? controller;
+  final String? Function(String?)? validator;
+  final Widget? additionalLabelWidget;
+  final bool obscureText;
+
+  const StyledFormInput(
+      {super.key,
+      required this.labelText,
+      required this.hintText,
+      this.controller,
+      this.validator,
+      this.additionalLabelWidget,
+      this.obscureText = false});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      //email input
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            StyledInputLabelText(labelText),
+            if (additionalLabelWidget != null) ...[
+              const Expanded(child: SizedBox()),
+              additionalLabelWidget!,
+            ]
+          ],
+        ),
+        const SizedBox(height: 4),
+        TextFormField(
+          validator: validator,
+          controller: controller,
+          cursorColor: AppColors.mainColor,
+          obscureText: obscureText,
+          style: GoogleFonts.lato().copyWith(
+              fontSize: 16,
+              fontWeight: FontWeight.normal,
+              color: AppColors.mainColor),
+          decoration: InputDecoration(
+              hintText: hintText,
+              hintStyle: GoogleFonts.lato(
+                  fontSize: 16,
+                  fontWeight: FontWeight.normal,
+                  color: AppColors.mainColor), // Hint text inside the input
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
+              enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide:
+                      BorderSide(color: AppColors.mainColor, width: 1.5)),
+              focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(color: AppColors.mainColor, width: 2)),
+              focusedErrorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide:
+                      BorderSide(color: AppColors.errorColor, width: 1.5)),
+              errorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide:
+                      BorderSide(color: AppColors.errorColor, width: 1.5)),
+              errorStyle: GoogleFonts.lato().copyWith(
+                color: AppColors.errorColor,
+                fontSize: 12,
+                fontWeight: FontWeight.normal,
+              )),
+        ),
+      ],
+    );
+  }
+}
+
+// Text
+
+class StyledInputLabelText extends StatelessWidget {
+  const StyledInputLabelText(this.text, {super.key});
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: GoogleFonts.lato(
+          fontSize: 18,
+          fontWeight: FontWeight.normal,
+          color: AppColors.mainColor),
+    );
+  }
+}
+
+class StyledInputText extends StatelessWidget {
+  const StyledInputText(this.text, {super.key});
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: GoogleFonts.lato(
+          fontSize: 16,
+          fontWeight: FontWeight.normal,
+          color: AppColors.secondaryColor),
     );
   }
 }
