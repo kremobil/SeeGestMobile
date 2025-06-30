@@ -10,6 +10,8 @@ class StyledInput extends StatelessWidget {
   final TextEditingController? controller;
   final Widget? additionalLabelWidget;
   final bool obscureText;
+  final VoidCallback? onTap;
+  final void Function(String)? onChanged;
 
   const StyledInput(
       {super.key,
@@ -17,7 +19,9 @@ class StyledInput extends StatelessWidget {
       required this.hintText,
       this.controller,
       this.additionalLabelWidget,
-      this.obscureText = false});
+      this.obscureText = false,
+      this.onTap,
+      this.onChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +42,12 @@ class StyledInput extends StatelessWidget {
           controller: controller,
           cursorColor: AppColors.mainColor,
           obscureText: obscureText,
+          onTap: onTap,
+          onChanged: (value) {
+            if (onChanged != null) {
+              onChanged!(value);
+            }
+          },
           style: GoogleFonts.lato(
               fontSize: 16,
               fontWeight: FontWeight.normal,

@@ -4,6 +4,8 @@ import 'package:SeeGestMobileApp/classes/colors.dart';
 import 'package:SeeGestMobileApp/controllers/user_controller.dart';
 import 'package:SeeGestMobileApp/classes/user.dart';
 import 'package:SeeGestMobileApp/main.dart';
+import 'package:SeeGestMobileApp/shared/styled_input.dart';
+import 'package:SeeGestMobileApp/shared/tags_input.dart';
 import 'package:SeeGestMobileApp/views/nav_bar_views/add_post.dart';
 import 'package:SeeGestMobileApp/views/nav_bar_views/homepage_founded_posts.dart';
 import 'package:SeeGestMobileApp/views/nav_bar_views/map_view.dart';
@@ -26,15 +28,18 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   Widget? _selectedPage = HomePage();
   late Future<User> futureUser;
+  final GlobalKey _scrollableKey = GlobalKey();
+  ScrollController _scrollController = ScrollController();
+  final GlobalKey<DynamicDropdownExpanderState> _dynamicExpanderKey =
+      GlobalKey<DynamicDropdownExpanderState>();
 
   void _onItemTapped(int index) async {
     Widget? selectedPage = getSelectedPage(index);
     if (selectedPage != null) {
       setState(() {
-          _selectedPage = selectedPage;
-          _selectedIndex = index;
-        }
-      );
+        _selectedPage = selectedPage;
+        _selectedIndex = index;
+      });
     }
   }
 
@@ -64,10 +69,10 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    
-    futureUser = UserController.getUserData(); // Fetch user data when the widget is initialized`
-  }
 
+    futureUser = UserController
+        .getUserData(); // Fetch user data when the widget is initialized`
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -82,33 +87,35 @@ class _HomePageState extends State<HomePage> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            FutureBuilder<User>(future: futureUser, builder: (context, snapshot) {
-              print(snapshot);
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const CircularProgressIndicator();
-              } else if (snapshot.hasError) {
-                return const Text('Error loading user data');
-              } else if (snapshot.hasData) {
-                User? user = snapshot.data;
-                String _headerGreeting = 'Cześć ${user?.name}!';
-                String _avatarUrl = user?.avatarUrl ?? '';
-                return Row(
-                  children: <Widget>[
-                    CircleAvatar(
-                      backgroundImage: NetworkImage(_avatarUrl),
-                      backgroundColor: Colors.transparent,
-                    ),
-                    const SizedBox(width: 8),
-                    Text(
-                      _headerGreeting,
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ],
-                );
-              } else {
-                return const Text('No user data available');
-              }
-            }),
+            FutureBuilder<User>(
+                future: futureUser,
+                builder: (context, snapshot) {
+                  print(snapshot);
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const CircularProgressIndicator();
+                  } else if (snapshot.hasError) {
+                    return const Text('Error loading user data');
+                  } else if (snapshot.hasData) {
+                    User? user = snapshot.data;
+                    String _headerGreeting = 'Cześć ${user?.name}!';
+                    String _avatarUrl = user?.avatarUrl ?? '';
+                    return Row(
+                      children: <Widget>[
+                        CircleAvatar(
+                          backgroundImage: NetworkImage(_avatarUrl),
+                          backgroundColor: Colors.transparent,
+                        ),
+                        const SizedBox(width: 8),
+                        Text(
+                          _headerGreeting,
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ],
+                    );
+                  } else {
+                    return const Text('No user data available');
+                  }
+                }),
             IconButton(
               icon:
                   const Icon(Icons.notifications_active_outlined), // Ring icon
@@ -121,16 +128,28 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(
-            horizontal: 24.0), // Add horizontal padding
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        key: _scrollableKey,
+        controller: _scrollController,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24.0),
           child: Column(
             children: [
               TimePickerWidget(), // Add the TimePickerWidget
               const SizedBox(
                   height: 32), // Add space between time picker and calendar
               HomepageCalendar(),
+              TagsInput(
+                scrollableKey: _scrollableKey,
+                scrollController: _scrollController,
+                dynamicExpanderKey: _dynamicExpanderKey,
+              ),
+              DynamicDropdownExpander(
+                key: _dynamicExpanderKey,
+              ),
+              SizedBox(
+                height: 16,
+              )
             ],
           ),
         ),
