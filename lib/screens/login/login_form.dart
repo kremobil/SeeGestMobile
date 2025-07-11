@@ -79,7 +79,7 @@ class _LoginFormState extends State<LoginForm> {
                             emailController.text, passwordController.text);
 
                     if (loginStatus && context.mounted) {
-                      Navigator.of(context).pushNamed('/home');
+                      Navigator.of(context).pushReplacementNamed('/home');
                     }
                   } catch (e) {
                     ScaffoldMessenger.of(context).showSnackBar(

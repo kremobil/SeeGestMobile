@@ -2,7 +2,8 @@ import 'package:SeeGestMobileApp/controllers/user_controller.dart';
 import 'package:SeeGestMobileApp/screens/login/login_form.dart';
 import 'package:SeeGestMobileApp/shared/styled_text.dart';
 import 'package:flutter/material.dart';
-import 'package:SeeGestMobileApp/shared/styled_button.dart'; 
+import 'package:SeeGestMobileApp/shared/styled_button.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart'; 
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({
@@ -57,24 +58,24 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(height: 48), // Add vertical spacing
                 StyledFilledButton(
                   text: 'Zaloguj się przez Facebook',
-                  icon: Icons.facebook,
+                  icon: FontAwesomeIcons.facebook,
                   callback: () async {
                     bool loginSuccess = await UserController.loginWithFacebook(context);
                     if (loginSuccess && context.mounted) {
                       Navigator.pop(context);
-                      Navigator.pushNamed(context, '/home');
+                      Navigator.pushReplacementNamed(context, '/home');
                     }
                   },
                 ),
                 const SizedBox(height: 8), // Add vertical spacing
                 StyledFilledButton(
                   text: 'zaloguj się przez Google',
-                  icon: Icons.g_translate,
+                  icon: FontAwesomeIcons.google,
                   callback: () async {
                     bool logginSuccess =
                         await UserController.loginWithGoogle(context);
                     if (logginSuccess && context.mounted) {
-                      Navigator.pushNamed(context, '/home');
+                      Navigator.pushReplacementNamed(context, '/home');
                     }
                   },
                 ),

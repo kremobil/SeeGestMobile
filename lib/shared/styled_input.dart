@@ -12,6 +12,7 @@ class StyledInput extends StatelessWidget {
   final bool obscureText;
   final VoidCallback? onTap;
   final void Function(String)? onChanged;
+  final bool readOnly;
 
   const StyledInput(
       {super.key,
@@ -21,7 +22,8 @@ class StyledInput extends StatelessWidget {
       this.additionalLabelWidget,
       this.obscureText = false,
       this.onTap,
-      this.onChanged});
+      this.onChanged,
+      this.readOnly = false});
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +41,7 @@ class StyledInput extends StatelessWidget {
         ),
         const SizedBox(height: 4),
         TextField(
+          readOnly: readOnly,
           controller: controller,
           cursorColor: AppColors.mainColor,
           obscureText: obscureText,
@@ -95,6 +98,7 @@ class StyledFormInput extends StatelessWidget {
   final String? Function(String?)? validator;
   final Widget? additionalLabelWidget;
   final bool obscureText;
+  final bool readOnly;
 
   const StyledFormInput(
       {super.key,
@@ -103,7 +107,8 @@ class StyledFormInput extends StatelessWidget {
       this.controller,
       this.validator,
       this.additionalLabelWidget,
-      this.obscureText = false});
+      this.obscureText = false,
+      this.readOnly = false});
 
   @override
   Widget build(BuildContext context) {
@@ -123,6 +128,7 @@ class StyledFormInput extends StatelessWidget {
         ),
         const SizedBox(height: 4),
         TextFormField(
+          readOnly: readOnly,
           validator: validator,
           controller: controller,
           cursorColor: AppColors.mainColor,

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
@@ -77,8 +78,7 @@ class UserController {
         print('Błąd podczas rejestracji: ${response.statusCode}');
         Map<String, dynamic> body = jsonDecode(response.body);
         if (body['message'] == 'User with email $email already exists') {
-          return Future.error(
-              'Użytkownik o tym adresie e-mail już istnieje');
+          return Future.error('Użytkownik o tym adresie e-mail już istnieje');
         } else {
           return Future.error(
             'Wystąpił błąd podczas rejestracji. Proszę spróbować ponownie później.',
@@ -87,8 +87,8 @@ class UserController {
       }
     } catch (e) {
       return Future.error(
-          'Wystąpił błąd po stronie serwera: ${e.toString()}',
-        );
+        'Wystąpił błąd po stronie serwera: ${e.toString()}',
+      );
     }
   }
 
@@ -228,6 +228,38 @@ class UserController {
       }
     } catch (e) {
       print('Błąd podczas wysyłania e-maila resetującego hasło: $e');
+      return false;
+    }
+  }
+
+  static Future<bool> changePassword(String oldPassword, String newPassword,
+      String newPasswordConfirmation) async {
+    try {
+      final http.Response response =
+          await http.put(Uri.parse("https://api.seegest.com/change-password"),
+          headers: {
+            "Authorization": "Bearer ${await StorageController().getToken()}"
+          },
+              body: jsonEncode({
+                "old_password": oldPassword,
+                "new_password": newPassword,
+                "new_password_confirmation": newPasswordConfirmation
+              }));
+
+      print('Status kod odpowiedzi: ${response.statusCode}');
+      print('Odpowiedź serwera: ${response.body}');
+
+      if (response.statusCode == 200) {
+        return true;
+      } else {
+        print(
+            'Błąd podczas wysyłania e-maila resetującego hasło: ${response.statusCode}');
+        return false;
+      }
+    } catch (e) {
+
+      print(e);
+
       return false;
     }
   }

@@ -1,7 +1,12 @@
 import 'package:SeeGestMobileApp/firebase_options.dart';
+import 'package:SeeGestMobileApp/screens/add_post/add_post_screen.dart';
+import 'package:SeeGestMobileApp/screens/homepage/homepage_screen.dart';
 import 'package:SeeGestMobileApp/screens/login/login_screen.dart';
+import 'package:SeeGestMobileApp/screens/map/map_screen.dart';
 import 'package:SeeGestMobileApp/screens/password_reset/password_rest_sreenc.dart';
+import 'package:SeeGestMobileApp/screens/profile/profile_screen.dart';
 import 'package:SeeGestMobileApp/seegest_theme.dart';
+import 'package:SeeGestMobileApp/shared/dashboard_layout.dart';
 import 'package:SeeGestMobileApp/views/nav_bar_views/nav_bar_wrapper.dart';
 import 'package:SeeGestMobileApp/screens/register/register_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -32,11 +37,15 @@ class _MyAppState extends State<MyApp> {
       title: "SeeGest",
       initialRoute: loggedView ? '/home' : '/login',
       routes: {
-        '/home': (context) => const HomePage(),
+        '/home': (context) => const HomepageScreen(),
         '/login': (context) => const LoginScreen(),
         '/register-options': (context) => const RegisterMethodsScreen(),
         '/register': (context) => const RegisterScreen(),
-        '/reset-password':  (context) => const PasswordRestScreen()
+        '/reset-password':  (context) => const PasswordRestScreen(),
+        '/add-post': (context) => const AddPostScreen(),
+        '/map': (context) => const MapScreen(),
+        '/profile': (context) => const ProfileScreen(), // Profile route
+        
         // '/calendar': (context) => const MonthlyCalendar(), // Add the calendar route
         // '/timePicker': (context) => const TimePickerWidget(), // Add the time picker route
       },

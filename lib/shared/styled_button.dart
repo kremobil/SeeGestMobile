@@ -24,7 +24,7 @@ class StyledFilledButton extends StatelessWidget {
     super.key,
     required this.text,
     this.icon,
-    this.callback,
+    this.callback
   });
 
   @override

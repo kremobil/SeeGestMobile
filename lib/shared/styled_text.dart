@@ -12,7 +12,37 @@ class StyledHeadingText extends StatelessWidget {
     return Text(text, style: GoogleFonts.lato(
       color: AppColors.mainColor,
       fontSize: 24,
-      fontWeight: FontWeight.w600
+      fontWeight: FontWeight.w600,
+    ),);
+  }
+}
+
+class StyledBodyTextLarge extends StatelessWidget {
+  const StyledBodyTextLarge(this.text, {super.key});
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(text, style: GoogleFonts.lato(
+      color: AppColors.mainColor,
+      fontSize: 16,
+      fontWeight: FontWeight.w400
+    ),);
+  }
+}
+
+class StyledSecondarySubheadingText extends StatelessWidget {
+  const StyledSecondarySubheadingText(this.text, {super.key});
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(text, style: GoogleFonts.lato(
+      color: AppColors.secondaryColor,
+      fontSize: 14,
+      fontWeight: FontWeight.w500
     ),);
   }
 }
