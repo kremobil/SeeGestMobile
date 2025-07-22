@@ -58,6 +58,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
           children: [
+            const SizedBox(height: 32),
             Row(
               children: [
                 futureUser.when(

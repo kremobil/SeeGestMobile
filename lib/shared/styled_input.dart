@@ -13,6 +13,7 @@ class StyledInput extends StatelessWidget {
   final VoidCallback? onTap;
   final void Function(String)? onChanged;
   final bool readOnly;
+  final Icon? prefixIcon;
 
   const StyledInput(
       {super.key,
@@ -23,7 +24,8 @@ class StyledInput extends StatelessWidget {
       this.obscureText = false,
       this.onTap,
       this.onChanged,
-      this.readOnly = false});
+      this.readOnly = false,
+      this.prefixIcon});
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +84,9 @@ class StyledInput extends StatelessWidget {
                 color: AppColors.errorColor,
                 fontSize: 12,
                 fontWeight: FontWeight.normal,
-              )),
+              ),
+              prefixIcon: prefixIcon,
+              prefixIconColor: AppColors.mainColor),
         ),
       ],
     );

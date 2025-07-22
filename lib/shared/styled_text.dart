@@ -2,6 +2,21 @@ import 'package:SeeGestMobileApp/seegest_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+class StyledTitleText extends StatelessWidget {
+  const StyledTitleText(this.text, {super.key});
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(text, style: GoogleFonts.lato(
+      color: AppColors.mainColor,
+      fontSize: 32,
+      fontWeight: FontWeight.w600,
+    ),);
+  }
+}
+
 class StyledHeadingText extends StatelessWidget {
   const StyledHeadingText(this.text, {super.key});
 

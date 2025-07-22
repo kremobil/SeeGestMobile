@@ -7,7 +7,6 @@ import 'package:SeeGestMobileApp/screens/password_reset/password_rest_sreenc.dar
 import 'package:SeeGestMobileApp/screens/profile/profile_screen.dart';
 import 'package:SeeGestMobileApp/seegest_theme.dart';
 import 'package:SeeGestMobileApp/shared/dashboard_layout.dart';
-import 'package:SeeGestMobileApp/views/nav_bar_views/nav_bar_wrapper.dart';
 import 'package:SeeGestMobileApp/screens/register/register_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

@@ -29,7 +29,6 @@ class _AccountInfoState extends ConsumerState<AccountInfo> {
         const SizedBox(height: 32,),
         ChangePasswordForm(),
         const SizedBox(height: 32,),
-
       ],
     );
   }

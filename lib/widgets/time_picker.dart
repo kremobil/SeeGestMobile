@@ -1,9 +1,20 @@
+import 'dart:math';
+
 import 'package:SeeGestMobileApp/seegest_theme.dart';
 import 'package:SeeGestMobileApp/shared/styled_input.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class TimePickerWidget extends StatefulWidget {
-  const TimePickerWidget({super.key});
+  const TimePickerWidget(
+      {super.key,
+      required this.labelText,
+      required this.onTimeSelected,
+      this.validator});
+
+  final String labelText;
+  final void Function(TimeOfDay) onTimeSelected;
+  final String? Function(TimeOfDay)? validator;
 
   @override
   _TimePickerWidgetState createState() => _TimePickerWidgetState();
@@ -32,6 +43,21 @@ class _TimePickerWidgetState extends State<TimePickerWidget> {
       },
     );
     if (picked != null && picked != _selectedTime) {
+      final String? errorMessage =
+          widget.validator != null ? widget.validator!(picked) : null;
+
+      if (errorMessage != null) {
+        print(errorMessage);
+        if (context.mounted) {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(errorMessage, textAlign: TextAlign.center,)));
+        }
+
+        return;
+      }
+
+      widget.onTimeSelected(picked);
+
       setState(() {
         _selectedTime = picked;
         _timeController.text = _selectedTime.format(context);
@@ -43,7 +69,16 @@ class _TimePickerWidgetState extends State<TimePickerWidget> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        StyledInput(labelText: 'Do Godziny', hintText: 'Wybierz godzinę', onTap: () => _selectTime(context), readOnly: true, controller: _timeController,),
+        StyledInput(
+          labelText: widget.labelText,
+          hintText: 'Wybierz godzinę',
+          prefixIcon: Icon(
+            FontAwesomeIcons.clock,
+          ),
+          onTap: () => _selectTime(context),
+          readOnly: true,
+          controller: _timeController,
+        ),
       ],
     );
   }
