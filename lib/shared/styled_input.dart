@@ -14,6 +14,9 @@ class StyledInput extends StatelessWidget {
   final void Function(String)? onChanged;
   final bool readOnly;
   final Icon? prefixIcon;
+  final int? maxLines;
+  final int? minLines;
+  final TextInputType? keyboardType;
 
   const StyledInput(
       {super.key,
@@ -25,7 +28,10 @@ class StyledInput extends StatelessWidget {
       this.onTap,
       this.onChanged,
       this.readOnly = false,
-      this.prefixIcon});
+      this.prefixIcon,
+      this.maxLines = 1,
+      this.minLines,
+      this.keyboardType = TextInputType.text});
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +54,9 @@ class StyledInput extends StatelessWidget {
           cursorColor: AppColors.mainColor,
           obscureText: obscureText,
           onTap: onTap,
+          maxLines: maxLines,
+          minLines: minLines,
+          keyboardType: keyboardType,
           onChanged: (value) {
             if (onChanged != null) {
               onChanged!(value);
@@ -103,6 +112,9 @@ class StyledFormInput extends StatelessWidget {
   final Widget? additionalLabelWidget;
   final bool obscureText;
   final bool readOnly;
+  final int? maxLines;
+  final int? minLines;
+  final TextInputType? keyboardType;
 
   const StyledFormInput(
       {super.key,
@@ -112,7 +124,10 @@ class StyledFormInput extends StatelessWidget {
       this.validator,
       this.additionalLabelWidget,
       this.obscureText = false,
-      this.readOnly = false});
+      this.readOnly = false,
+      this.maxLines = 1,
+      this.minLines,
+      this.keyboardType = TextInputType.text});
 
   @override
   Widget build(BuildContext context) {
@@ -137,6 +152,9 @@ class StyledFormInput extends StatelessWidget {
           controller: controller,
           cursorColor: AppColors.mainColor,
           obscureText: obscureText,
+          maxLines: maxLines,
+          minLines: minLines,
+          keyboardType: keyboardType,
           style: GoogleFonts.lato().copyWith(
               fontSize: 16,
               fontWeight: FontWeight.normal,

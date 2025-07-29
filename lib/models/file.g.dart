@@ -11,6 +11,7 @@ _FileModel _$FileModelFromJson(Map<String, dynamic> json) => _FileModel(
       filename: json['filename'] as String,
       mime_type: json['mime_type'] as String,
       size: (json['size'] as num).toInt(),
+      url: json['url'] as String,
       upload_date: json['upload_date'] as String,
     );
 
@@ -20,5 +21,6 @@ Map<String, dynamic> _$FileModelToJson(_FileModel instance) =>
       'filename': instance.filename,
       'mime_type': instance.mime_type,
       'size': instance.size,
+      'url': instance.url,
       'upload_date': instance.upload_date,
     };

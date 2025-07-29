@@ -10,6 +10,7 @@ sealed class FileModel with _$FileModel {
     required String filename,
     required String mime_type,
     required int size,
+    required String url,
     required String upload_date,
   }) = _FileModel;
 

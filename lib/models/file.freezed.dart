@@ -19,6 +19,7 @@ mixin _$FileModel {
   String get filename;
   String get mime_type;
   int get size;
+  String get url;
   String get upload_date;
 
   /// Create a copy of FileModel
@@ -42,6 +43,7 @@ mixin _$FileModel {
             (identical(other.mime_type, mime_type) ||
                 other.mime_type == mime_type) &&
             (identical(other.size, size) || other.size == size) &&
+            (identical(other.url, url) || other.url == url) &&
             (identical(other.upload_date, upload_date) ||
                 other.upload_date == upload_date));
   }
@@ -49,11 +51,11 @@ mixin _$FileModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, filename, mime_type, size, upload_date);
+      Object.hash(runtimeType, id, filename, mime_type, size, url, upload_date);
 
   @override
   String toString() {
-    return 'FileModel(id: $id, filename: $filename, mime_type: $mime_type, size: $size, upload_date: $upload_date)';
+    return 'FileModel(id: $id, filename: $filename, mime_type: $mime_type, size: $size, url: $url, upload_date: $upload_date)';
   }
 }
 
@@ -67,6 +69,7 @@ abstract mixin class $FileModelCopyWith<$Res> {
       String filename,
       String mime_type,
       int size,
+      String url,
       String upload_date});
 }
 
@@ -86,6 +89,7 @@ class _$FileModelCopyWithImpl<$Res> implements $FileModelCopyWith<$Res> {
     Object? filename = null,
     Object? mime_type = null,
     Object? size = null,
+    Object? url = null,
     Object? upload_date = null,
   }) {
     return _then(_self.copyWith(
@@ -105,6 +109,10 @@ class _$FileModelCopyWithImpl<$Res> implements $FileModelCopyWith<$Res> {
           ? _self.size
           : size // ignore: cast_nullable_to_non_nullable
               as int,
+      url: null == url
+          ? _self.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
       upload_date: null == upload_date
           ? _self.upload_date
           : upload_date // ignore: cast_nullable_to_non_nullable
@@ -121,6 +129,7 @@ class _FileModel implements FileModel {
       required this.filename,
       required this.mime_type,
       required this.size,
+      required this.url,
       required this.upload_date});
   factory _FileModel.fromJson(Map<String, dynamic> json) =>
       _$FileModelFromJson(json);
@@ -133,6 +142,8 @@ class _FileModel implements FileModel {
   final String mime_type;
   @override
   final int size;
+  @override
+  final String url;
   @override
   final String upload_date;
 
@@ -162,6 +173,7 @@ class _FileModel implements FileModel {
             (identical(other.mime_type, mime_type) ||
                 other.mime_type == mime_type) &&
             (identical(other.size, size) || other.size == size) &&
+            (identical(other.url, url) || other.url == url) &&
             (identical(other.upload_date, upload_date) ||
                 other.upload_date == upload_date));
   }
@@ -169,11 +181,11 @@ class _FileModel implements FileModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, filename, mime_type, size, upload_date);
+      Object.hash(runtimeType, id, filename, mime_type, size, url, upload_date);
 
   @override
   String toString() {
-    return 'FileModel(id: $id, filename: $filename, mime_type: $mime_type, size: $size, upload_date: $upload_date)';
+    return 'FileModel(id: $id, filename: $filename, mime_type: $mime_type, size: $size, url: $url, upload_date: $upload_date)';
   }
 }
 
@@ -190,6 +202,7 @@ abstract mixin class _$FileModelCopyWith<$Res>
       String filename,
       String mime_type,
       int size,
+      String url,
       String upload_date});
 }
 
@@ -209,6 +222,7 @@ class __$FileModelCopyWithImpl<$Res> implements _$FileModelCopyWith<$Res> {
     Object? filename = null,
     Object? mime_type = null,
     Object? size = null,
+    Object? url = null,
     Object? upload_date = null,
   }) {
     return _then(_FileModel(
@@ -228,6 +242,10 @@ class __$FileModelCopyWithImpl<$Res> implements _$FileModelCopyWith<$Res> {
           ? _self.size
           : size // ignore: cast_nullable_to_non_nullable
               as int,
+      url: null == url
+          ? _self.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
       upload_date: null == upload_date
           ? _self.upload_date
           : upload_date // ignore: cast_nullable_to_non_nullable
