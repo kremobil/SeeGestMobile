@@ -6,7 +6,7 @@ part of 'tagsProvider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$tagsSearchHash() => r'0a1020c53de2358c23f9177f8b7c3f6195e1b690';
+String _$tagsSearchHash() => r'fdf986fea2e62b10d13411aade7e105289dc4bab';
 
 /// See also [TagsSearch].
 @ProviderFor(TagsSearch)

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:SeeGestMobileApp/seegest_theme.dart';
 
@@ -13,10 +14,14 @@ class StyledInput extends StatelessWidget {
   final VoidCallback? onTap;
   final void Function(String)? onChanged;
   final bool readOnly;
-  final Icon? prefixIcon;
+  final Widget? prefixIcon;
+  final Widget? suffixIcon;
   final int? maxLines;
   final int? minLines;
   final TextInputType? keyboardType;
+  final FocusNode? focusNode;
+  final void Function(String)? onSubmitted;
+  final List<TextInputFormatter>? inputFormatters;
 
   const StyledInput(
       {super.key,
@@ -29,9 +34,13 @@ class StyledInput extends StatelessWidget {
       this.onChanged,
       this.readOnly = false,
       this.prefixIcon,
+      this.suffixIcon,
       this.maxLines = 1,
       this.minLines,
-      this.keyboardType = TextInputType.text});
+      this.focusNode,
+      this.keyboardType = TextInputType.text,
+      this.onSubmitted,
+      this.inputFormatters});
 
   @override
   Widget build(BuildContext context) {
@@ -51,12 +60,15 @@ class StyledInput extends StatelessWidget {
         TextField(
           readOnly: readOnly,
           controller: controller,
+          inputFormatters: inputFormatters,
           cursorColor: AppColors.mainColor,
           obscureText: obscureText,
           onTap: onTap,
           maxLines: maxLines,
           minLines: minLines,
           keyboardType: keyboardType,
+          onSubmitted: onSubmitted,
+          focusNode: focusNode,
           onChanged: (value) {
             if (onChanged != null) {
               onChanged!(value);
@@ -95,6 +107,7 @@ class StyledInput extends StatelessWidget {
                 fontWeight: FontWeight.normal,
               ),
               prefixIcon: prefixIcon,
+              suffixIcon: suffixIcon,
               prefixIconColor: AppColors.mainColor),
         ),
       ],
@@ -115,6 +128,9 @@ class StyledFormInput extends StatelessWidget {
   final int? maxLines;
   final int? minLines;
   final TextInputType? keyboardType;
+  final FocusNode? focusNode;
+  final void Function(String)? onFieldSubmitted;
+  final List<TextInputFormatter>? inputFormatters;
 
   const StyledFormInput(
       {super.key,
@@ -126,8 +142,11 @@ class StyledFormInput extends StatelessWidget {
       this.obscureText = false,
       this.readOnly = false,
       this.maxLines = 1,
+      this.focusNode,
       this.minLines,
-      this.keyboardType = TextInputType.text});
+      this.keyboardType = TextInputType.text,
+      this.onFieldSubmitted,
+      this.inputFormatters});
 
   @override
   Widget build(BuildContext context) {
@@ -155,6 +174,8 @@ class StyledFormInput extends StatelessWidget {
           maxLines: maxLines,
           minLines: minLines,
           keyboardType: keyboardType,
+          inputFormatters: inputFormatters,
+          onFieldSubmitted: onFieldSubmitted,
           style: GoogleFonts.lato().copyWith(
               fontSize: 16,
               fontWeight: FontWeight.normal,

@@ -8,11 +8,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class IconSelectInput extends ConsumerStatefulWidget {
-  const IconSelectInput({super.key,
+  const IconSelectInput({
+    super.key,
     required this.onIconSelected,
+    this.initialIcon,
   });
 
   final void Function(IconModel icon) onIconSelected;
+  final IconModel? initialIcon;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
@@ -21,6 +24,12 @@ class IconSelectInput extends ConsumerStatefulWidget {
 
 class _IconSelectInputState extends ConsumerState<IconSelectInput> {
   IconModel? selectedIcon;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedIcon = widget.initialIcon;
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -62,7 +62,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   callback: () async {
                     bool loginSuccess = await UserController.loginWithFacebook(context);
                     if (loginSuccess && context.mounted) {
-                      Navigator.pop(context);
                       Navigator.pushReplacementNamed(context, '/home');
                     }
                   },

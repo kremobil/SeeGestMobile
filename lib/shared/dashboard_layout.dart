@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DashboardLayout extends StatefulWidget {
-  const DashboardLayout({super.key, required this.body, this.appBar = const HomepageAppbar()});
+  const DashboardLayout({super.key, required this.body, this.appBar = const HomepageAppbar(), this.selectedIndex = 0});
 
   final Widget body;
   final PreferredSizeWidget appBar;
+  final int selectedIndex;
 
   @override
   State<DashboardLayout> createState() => _DashboardLayoutState();
@@ -56,6 +57,12 @@ class _DashboardLayoutState extends State<DashboardLayout> {
         Navigator.of(context).pushReplacementNamed('/home');
         return 0; // Navigate to the homepage
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedIndex = widget.selectedIndex;
   }
 
   @override

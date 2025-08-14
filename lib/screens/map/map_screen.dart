@@ -1,5 +1,6 @@
 import 'package:SeeGestMobileApp/shared/dashboard_layout.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({super.key});
@@ -9,11 +10,22 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
+  late GoogleMapController mapController;
+
+  final LatLng _center = const LatLng(-33.86, 151.20);
+
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return DashboardLayout(body: Center(
-      child: Text(
-        'Map Screen',
+    return DashboardLayout(
+        body: GoogleMap(
+      onMapCreated: _onMapCreated,
+      initialCameraPosition: CameraPosition(
+        target: _center,
+        zoom: 11.0,
       ),
     ));
   }
