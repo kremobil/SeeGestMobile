@@ -2,6 +2,7 @@ import 'package:SeeGestMobileApp/models/icon.dart';
 import 'package:SeeGestMobileApp/models/tags.dart';
 import 'package:SeeGestMobileApp/screens/add_post/step1.dart';
 import 'package:SeeGestMobileApp/screens/add_post/step2.dart';
+import 'package:SeeGestMobileApp/screens/add_post/step3.dart';
 import 'package:SeeGestMobileApp/seegest_theme.dart';
 import 'package:SeeGestMobileApp/shared/dashboard_layout.dart';
 import 'package:SeeGestMobileApp/shared/styled_text.dart';
@@ -23,6 +24,9 @@ class _AddPostScreenState extends State<AddPostScreen> {
   IconModel? _icon;
   List<TagsModel>? _tags;
   DateTime? _date;
+  double? _latitude;
+  double? _longitude;
+  String? _locationName;
 
   @override
   Widget build(BuildContext context) {
@@ -107,10 +111,31 @@ class _AddPostScreenState extends State<AddPostScreen> {
                 initialTags: _tags,
                 initialDate: _date,
               ),
-            2 => Step2(onStepComplete:
-                  (double lat, double lng, String locationName) {
-                return;
-              }),
+            2 => Step2(
+                onStepComplete: (double lat, double lng, String locationName) {
+                  setState(() {
+                    _latitude = lat;
+                    _longitude = lng;
+                    _locationName = locationName;
+                    step = 3;
+                  });
+                  return;
+                },
+                postIcon: _icon!,
+                initalLocationName: _locationName,
+                initialLat: _latitude,
+                initialLng: _longitude,
+              ),
+            3 => Step3(
+              title: _title!,
+              tags: _tags ?? [],
+              content: _content!,
+              locationName: _locationName!,
+              latitide: _latitude!,
+              longitude: _longitude!,
+              icon: _icon!,
+              date: _date!,
+            ),
             int() => Placeholder(),
           },
         ));
