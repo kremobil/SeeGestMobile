@@ -32,3 +32,15 @@ Map<String, dynamic> _$UserModelToJson(_UserModel instance) =>
       'isFacebookConnected': instance.isFacebookConnected,
       'isGoogleConnected': instance.isGoogleConnected,
     };
+
+_PlainUserModel _$PlainUserModelFromJson(Map<String, dynamic> json) =>
+    _PlainUserModel(
+      name: json['name'] as String,
+      avatar: FileModel.fromJson(json['avatar'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$PlainUserModelToJson(_PlainUserModel instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'avatar': instance.avatar,
+    };

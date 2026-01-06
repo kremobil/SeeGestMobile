@@ -42,7 +42,7 @@ class _TimePickerWidgetState extends State<TimePickerWidget> {
         );
       },
     );
-    if (picked != null && picked != _selectedTime) {
+    if (picked != null) {
       final String? errorMessage =
           widget.validator != null ? widget.validator!(picked) : null;
 

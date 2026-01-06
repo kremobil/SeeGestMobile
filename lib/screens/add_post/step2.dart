@@ -93,10 +93,7 @@ class _Step2State extends ConsumerState<Step2> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     _requestLocationPermission().then((_) {
-      if (
-          widget.initialLat != null &&
-          widget.initialLng != null) {
-        
+      if (widget.initialLat != null && widget.initialLng != null) {
         if (widget.initalLocationName != null) {
           _LocationName = widget.initalLocationName;
         } else {
@@ -106,10 +103,10 @@ class _Step2State extends ConsumerState<Step2> with TickerProviderStateMixin {
         _createPostMarker(LatLng(widget.initialLat!, widget.initialLng!));
 
         setState(() {
-              _initialPosition = LatLng(widget.initialLat!, widget.initialLng!);
-              _LocationPostion = LatLng(widget.initialLat!, widget.initialLng!);
-              _mapReady = true;
-            });
+          _initialPosition = LatLng(widget.initialLat!, widget.initialLng!);
+          _LocationPostion = LatLng(widget.initialLat!, widget.initialLng!);
+          _mapReady = true;
+        });
       } else {
         if (_permissionGranted == true) {
           LocationController.getCurrentLatLng().then((LatLng position) {
@@ -552,7 +549,7 @@ class _Step2State extends ConsumerState<Step2> with TickerProviderStateMixin {
                                                                                         overflow: TextOverflow.ellipsis,
                                                                                         style: GoogleFonts.lato(fontSize: 14, color: AppColors.mainColor),
                                                                                       ),
-                                                                                      Text(suggestion.structuredFormat.secondaryText.text, overflow: TextOverflow.ellipsis, style: GoogleFonts.lato(fontSize: 13, color: AppColors.secondaryColor))
+                                                                                      if (suggestion.structuredFormat.secondaryText?.text != null) Text(suggestion.structuredFormat.secondaryText!.text, overflow: TextOverflow.ellipsis, style: GoogleFonts.lato(fontSize: 13, color: AppColors.secondaryColor))
                                                                                     ],
                                                                                   ),
                                                                                 )

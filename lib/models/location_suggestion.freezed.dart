@@ -351,7 +351,7 @@ class __$TextInfoModelCopyWithImpl<$Res>
 /// @nodoc
 mixin _$StructuredFormatModel {
   TextInfoModel get mainText;
-  TextInfoModel get secondaryText;
+  TextInfoModel? get secondaryText;
 
   /// Create a copy of StructuredFormatModel
   /// with the given fields replaced by the non-null parameter values.
@@ -391,10 +391,10 @@ abstract mixin class $StructuredFormatModelCopyWith<$Res> {
           $Res Function(StructuredFormatModel) _then) =
       _$StructuredFormatModelCopyWithImpl;
   @useResult
-  $Res call({TextInfoModel mainText, TextInfoModel secondaryText});
+  $Res call({TextInfoModel mainText, TextInfoModel? secondaryText});
 
   $TextInfoModelCopyWith<$Res> get mainText;
-  $TextInfoModelCopyWith<$Res> get secondaryText;
+  $TextInfoModelCopyWith<$Res>? get secondaryText;
 }
 
 /// @nodoc
@@ -411,17 +411,17 @@ class _$StructuredFormatModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? mainText = null,
-    Object? secondaryText = null,
+    Object? secondaryText = freezed,
   }) {
     return _then(_self.copyWith(
       mainText: null == mainText
           ? _self.mainText
           : mainText // ignore: cast_nullable_to_non_nullable
               as TextInfoModel,
-      secondaryText: null == secondaryText
+      secondaryText: freezed == secondaryText
           ? _self.secondaryText
           : secondaryText // ignore: cast_nullable_to_non_nullable
-              as TextInfoModel,
+              as TextInfoModel?,
     ));
   }
 
@@ -439,8 +439,12 @@ class _$StructuredFormatModelCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $TextInfoModelCopyWith<$Res> get secondaryText {
-    return $TextInfoModelCopyWith<$Res>(_self.secondaryText, (value) {
+  $TextInfoModelCopyWith<$Res>? get secondaryText {
+    if (_self.secondaryText == null) {
+      return null;
+    }
+
+    return $TextInfoModelCopyWith<$Res>(_self.secondaryText!, (value) {
       return _then(_self.copyWith(secondaryText: value));
     });
   }
@@ -449,15 +453,14 @@ class _$StructuredFormatModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _StructuredFormatModel implements StructuredFormatModel {
-  const _StructuredFormatModel(
-      {required this.mainText, required this.secondaryText});
+  const _StructuredFormatModel({required this.mainText, this.secondaryText});
   factory _StructuredFormatModel.fromJson(Map<String, dynamic> json) =>
       _$StructuredFormatModelFromJson(json);
 
   @override
   final TextInfoModel mainText;
   @override
-  final TextInfoModel secondaryText;
+  final TextInfoModel? secondaryText;
 
   /// Create a copy of StructuredFormatModel
   /// with the given fields replaced by the non-null parameter values.
@@ -504,12 +507,12 @@ abstract mixin class _$StructuredFormatModelCopyWith<$Res>
       __$StructuredFormatModelCopyWithImpl;
   @override
   @useResult
-  $Res call({TextInfoModel mainText, TextInfoModel secondaryText});
+  $Res call({TextInfoModel mainText, TextInfoModel? secondaryText});
 
   @override
   $TextInfoModelCopyWith<$Res> get mainText;
   @override
-  $TextInfoModelCopyWith<$Res> get secondaryText;
+  $TextInfoModelCopyWith<$Res>? get secondaryText;
 }
 
 /// @nodoc
@@ -526,17 +529,17 @@ class __$StructuredFormatModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   $Res call({
     Object? mainText = null,
-    Object? secondaryText = null,
+    Object? secondaryText = freezed,
   }) {
     return _then(_StructuredFormatModel(
       mainText: null == mainText
           ? _self.mainText
           : mainText // ignore: cast_nullable_to_non_nullable
               as TextInfoModel,
-      secondaryText: null == secondaryText
+      secondaryText: freezed == secondaryText
           ? _self.secondaryText
           : secondaryText // ignore: cast_nullable_to_non_nullable
-              as TextInfoModel,
+              as TextInfoModel?,
     ));
   }
 
@@ -554,8 +557,12 @@ class __$StructuredFormatModelCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $TextInfoModelCopyWith<$Res> get secondaryText {
-    return $TextInfoModelCopyWith<$Res>(_self.secondaryText, (value) {
+  $TextInfoModelCopyWith<$Res>? get secondaryText {
+    if (_self.secondaryText == null) {
+      return null;
+    }
+
+    return $TextInfoModelCopyWith<$Res>(_self.secondaryText!, (value) {
       return _then(_self.copyWith(secondaryText: value));
     });
   }

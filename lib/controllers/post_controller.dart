@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:SeeGestMobileApp/controllers/storage_controller.dart';
+import 'package:SeeGestMobileApp/models/post.dart';
+import 'package:SeeGestMobileApp/models/tags.dart';
 import 'package:http/http.dart' as http;
 
 class PostController {
@@ -86,5 +88,32 @@ class PostController {
       print("Network or other error occurred: $e");
       return false;
     }
+  }
+
+  static Future<List<PostModel>> searchPosts(DateTime from, DateTime to, List<TagsModel> tags, double? latitude, double? longitude) async {
+    final Map<String, dynamic> searchBody = {
+      'date_from': from.toIso8601String(),
+      'date_to': to.toIso8601String(),
+      'tags_ids': tags.map((tag) => tag.id).toList(),
+      'position': {
+        'latitude': latitude,
+        'longitude': longitude,
+      },
+    };
+
+    http.Response postsFound = await http.post(
+      Uri.parse("https://api.seegest.com/search-posts"),
+      headers: {
+        "content-type": "application/json",
+      },
+      body: jsonEncode(searchBody),
+    );
+
+    if (jsonDecode(postsFound.body)is Map && jsonDecode(postsFound.body).containsKey('errors')) return [];
+
+    return (jsonDecode(postsFound.body) as List)
+        .map((post) => PostModel.fromJson(post))
+        .toList();
+
   }
 }

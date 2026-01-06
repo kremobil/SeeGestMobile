@@ -268,7 +268,6 @@ class UserController {
     try {
       // Użyj singletona do pobrania tokenu
       String? token = await StorageController().getToken();
-      print('Token odczytany w getUserData: $token');
 
       if (token == null || token.isEmpty) {
         print('Brak tokenu dostępu');
@@ -283,9 +282,6 @@ class UserController {
           "Authorization": "Bearer $token",
         },
       );
-
-      print('Status odpowiedzi /myinfo: ${response.statusCode}');
-      print('Odpowiedź /myinfo: ${response.body}');
 
       if (response.statusCode == 200) {
         // Zamień na właściwą implementację User w zależności od struktury odpowiedzi

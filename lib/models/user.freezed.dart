@@ -358,4 +358,188 @@ class __$UserModelCopyWithImpl<$Res> implements _$UserModelCopyWith<$Res> {
   }
 }
 
+/// @nodoc
+mixin _$PlainUserModel {
+  String get name;
+  FileModel get avatar;
+
+  /// Create a copy of PlainUserModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $PlainUserModelCopyWith<PlainUserModel> get copyWith =>
+      _$PlainUserModelCopyWithImpl<PlainUserModel>(
+          this as PlainUserModel, _$identity);
+
+  /// Serializes this PlainUserModel to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PlainUserModel &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.avatar, avatar) || other.avatar == avatar));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, name, avatar);
+
+  @override
+  String toString() {
+    return 'PlainUserModel(name: $name, avatar: $avatar)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $PlainUserModelCopyWith<$Res> {
+  factory $PlainUserModelCopyWith(
+          PlainUserModel value, $Res Function(PlainUserModel) _then) =
+      _$PlainUserModelCopyWithImpl;
+  @useResult
+  $Res call({String name, FileModel avatar});
+
+  $FileModelCopyWith<$Res> get avatar;
+}
+
+/// @nodoc
+class _$PlainUserModelCopyWithImpl<$Res>
+    implements $PlainUserModelCopyWith<$Res> {
+  _$PlainUserModelCopyWithImpl(this._self, this._then);
+
+  final PlainUserModel _self;
+  final $Res Function(PlainUserModel) _then;
+
+  /// Create a copy of PlainUserModel
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? avatar = null,
+  }) {
+    return _then(_self.copyWith(
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      avatar: null == avatar
+          ? _self.avatar
+          : avatar // ignore: cast_nullable_to_non_nullable
+              as FileModel,
+    ));
+  }
+
+  /// Create a copy of PlainUserModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $FileModelCopyWith<$Res> get avatar {
+    return $FileModelCopyWith<$Res>(_self.avatar, (value) {
+      return _then(_self.copyWith(avatar: value));
+    });
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _PlainUserModel implements PlainUserModel {
+  const _PlainUserModel({required this.name, required this.avatar});
+  factory _PlainUserModel.fromJson(Map<String, dynamic> json) =>
+      _$PlainUserModelFromJson(json);
+
+  @override
+  final String name;
+  @override
+  final FileModel avatar;
+
+  /// Create a copy of PlainUserModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$PlainUserModelCopyWith<_PlainUserModel> get copyWith =>
+      __$PlainUserModelCopyWithImpl<_PlainUserModel>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$PlainUserModelToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _PlainUserModel &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.avatar, avatar) || other.avatar == avatar));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, name, avatar);
+
+  @override
+  String toString() {
+    return 'PlainUserModel(name: $name, avatar: $avatar)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$PlainUserModelCopyWith<$Res>
+    implements $PlainUserModelCopyWith<$Res> {
+  factory _$PlainUserModelCopyWith(
+          _PlainUserModel value, $Res Function(_PlainUserModel) _then) =
+      __$PlainUserModelCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String name, FileModel avatar});
+
+  @override
+  $FileModelCopyWith<$Res> get avatar;
+}
+
+/// @nodoc
+class __$PlainUserModelCopyWithImpl<$Res>
+    implements _$PlainUserModelCopyWith<$Res> {
+  __$PlainUserModelCopyWithImpl(this._self, this._then);
+
+  final _PlainUserModel _self;
+  final $Res Function(_PlainUserModel) _then;
+
+  /// Create a copy of PlainUserModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? name = null,
+    Object? avatar = null,
+  }) {
+    return _then(_PlainUserModel(
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      avatar: null == avatar
+          ? _self.avatar
+          : avatar // ignore: cast_nullable_to_non_nullable
+              as FileModel,
+    ));
+  }
+
+  /// Create a copy of PlainUserModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $FileModelCopyWith<$Res> get avatar {
+    return $FileModelCopyWith<$Res>(_self.avatar, (value) {
+      return _then(_self.copyWith(avatar: value));
+    });
+  }
+}
+
 // dart format on

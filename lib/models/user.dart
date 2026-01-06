@@ -21,3 +21,13 @@ sealed class UserModel with _$UserModel {
 
   factory UserModel.fromJson(Map<String, dynamic> json) => _$UserModelFromJson(json);
 }
+
+@freezed
+sealed class PlainUserModel with _$PlainUserModel {
+  const factory PlainUserModel({
+    required String name,
+    required FileModel avatar,
+  }) = _PlainUserModel;
+
+  factory PlainUserModel.fromJson(Map<String, dynamic> json) => _$PlainUserModelFromJson(json);
+}

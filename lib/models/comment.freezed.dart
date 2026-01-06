@@ -17,8 +17,10 @@ T _$identity<T>(T value) => value;
 mixin _$PlainCommentModel {
   int get id;
   String get content;
+  @JsonKey(name: 'created_at')
   DateTime get createdAt;
   int get depth;
+  @JsonKey(name: 'is_anonymous')
   bool get isAnonymous;
 
   /// Create a copy of PlainCommentModel
@@ -66,9 +68,9 @@ abstract mixin class $PlainCommentModelCopyWith<$Res> {
   $Res call(
       {int id,
       String content,
-      DateTime createdAt,
+      @JsonKey(name: 'created_at') DateTime createdAt,
       int depth,
-      bool isAnonymous});
+      @JsonKey(name: 'is_anonymous') bool isAnonymous});
 }
 
 /// @nodoc
@@ -121,9 +123,9 @@ class _PlainCommentModel implements PlainCommentModel {
   const _PlainCommentModel(
       {required this.id,
       required this.content,
-      required this.createdAt,
+      @JsonKey(name: 'created_at') required this.createdAt,
       required this.depth,
-      required this.isAnonymous});
+      @JsonKey(name: 'is_anonymous') required this.isAnonymous});
   factory _PlainCommentModel.fromJson(Map<String, dynamic> json) =>
       _$PlainCommentModelFromJson(json);
 
@@ -132,10 +134,12 @@ class _PlainCommentModel implements PlainCommentModel {
   @override
   final String content;
   @override
+  @JsonKey(name: 'created_at')
   final DateTime createdAt;
   @override
   final int depth;
   @override
+  @JsonKey(name: 'is_anonymous')
   final bool isAnonymous;
 
   /// Create a copy of PlainCommentModel
@@ -189,9 +193,9 @@ abstract mixin class _$PlainCommentModelCopyWith<$Res>
   $Res call(
       {int id,
       String content,
-      DateTime createdAt,
+      @JsonKey(name: 'created_at') DateTime createdAt,
       int depth,
-      bool isAnonymous});
+      @JsonKey(name: 'is_anonymous') bool isAnonymous});
 }
 
 /// @nodoc
@@ -242,12 +246,15 @@ class __$PlainCommentModelCopyWithImpl<$Res>
 mixin _$CommentModel {
   int get id;
   String get content;
+  @JsonKey(name: 'created_at')
   DateTime get createdAt;
   UserModel get author;
   PostModel get post;
+  @JsonKey(name: 'parent_comment')
   PlainCommentModel get parentComment;
   List<CommentModel> get replies;
   int get depth;
+  @JsonKey(name: 'is_anonymous')
   bool get isAnonymous;
   String get path;
 
@@ -312,13 +319,13 @@ abstract mixin class $CommentModelCopyWith<$Res> {
   $Res call(
       {int id,
       String content,
-      DateTime createdAt,
+      @JsonKey(name: 'created_at') DateTime createdAt,
       UserModel author,
       PostModel post,
-      PlainCommentModel parentComment,
+      @JsonKey(name: 'parent_comment') PlainCommentModel parentComment,
       List<CommentModel> replies,
       int depth,
-      bool isAnonymous,
+      @JsonKey(name: 'is_anonymous') bool isAnonymous,
       String path});
 
   $UserModelCopyWith<$Res> get author;
@@ -430,13 +437,13 @@ class _CommentModel implements CommentModel {
   const _CommentModel(
       {required this.id,
       required this.content,
-      required this.createdAt,
+      @JsonKey(name: 'created_at') required this.createdAt,
       required this.author,
       required this.post,
-      required this.parentComment,
+      @JsonKey(name: 'parent_comment') required this.parentComment,
       required final List<CommentModel> replies,
       required this.depth,
-      required this.isAnonymous,
+      @JsonKey(name: 'is_anonymous') required this.isAnonymous,
       required this.path})
       : _replies = replies;
   factory _CommentModel.fromJson(Map<String, dynamic> json) =>
@@ -447,12 +454,14 @@ class _CommentModel implements CommentModel {
   @override
   final String content;
   @override
+  @JsonKey(name: 'created_at')
   final DateTime createdAt;
   @override
   final UserModel author;
   @override
   final PostModel post;
   @override
+  @JsonKey(name: 'parent_comment')
   final PlainCommentModel parentComment;
   final List<CommentModel> _replies;
   @override
@@ -465,6 +474,7 @@ class _CommentModel implements CommentModel {
   @override
   final int depth;
   @override
+  @JsonKey(name: 'is_anonymous')
   final bool isAnonymous;
   @override
   final String path;
@@ -536,13 +546,13 @@ abstract mixin class _$CommentModelCopyWith<$Res>
   $Res call(
       {int id,
       String content,
-      DateTime createdAt,
+      @JsonKey(name: 'created_at') DateTime createdAt,
       UserModel author,
       PostModel post,
-      PlainCommentModel parentComment,
+      @JsonKey(name: 'parent_comment') PlainCommentModel parentComment,
       List<CommentModel> replies,
       int depth,
-      bool isAnonymous,
+      @JsonKey(name: 'is_anonymous') bool isAnonymous,
       String path});
 
   @override

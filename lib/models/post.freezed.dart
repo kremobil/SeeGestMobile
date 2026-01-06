@@ -18,11 +18,11 @@ mixin _$PostModel {
   int get id;
   String get title;
   String get content;
+  @JsonKey(name: 'created_at')
   DateTime get createdAt;
-  UserModel get author;
+  PlainUserModel get author;
   List<TagsModel> get tags;
   IconModel get icon;
-  bool get isAnonymous;
   double get latitude;
   double get longitude;
   String get location;
@@ -50,8 +50,6 @@ mixin _$PostModel {
             (identical(other.author, author) || other.author == author) &&
             const DeepCollectionEquality().equals(other.tags, tags) &&
             (identical(other.icon, icon) || other.icon == icon) &&
-            (identical(other.isAnonymous, isAnonymous) ||
-                other.isAnonymous == isAnonymous) &&
             (identical(other.latitude, latitude) ||
                 other.latitude == latitude) &&
             (identical(other.longitude, longitude) ||
@@ -71,14 +69,13 @@ mixin _$PostModel {
       author,
       const DeepCollectionEquality().hash(tags),
       icon,
-      isAnonymous,
       latitude,
       longitude,
       location);
 
   @override
   String toString() {
-    return 'PostModel(id: $id, title: $title, content: $content, createdAt: $createdAt, author: $author, tags: $tags, icon: $icon, isAnonymous: $isAnonymous, latitude: $latitude, longitude: $longitude, location: $location)';
+    return 'PostModel(id: $id, title: $title, content: $content, createdAt: $createdAt, author: $author, tags: $tags, icon: $icon, latitude: $latitude, longitude: $longitude, location: $location)';
   }
 }
 
@@ -91,16 +88,15 @@ abstract mixin class $PostModelCopyWith<$Res> {
       {int id,
       String title,
       String content,
-      DateTime createdAt,
-      UserModel author,
+      @JsonKey(name: 'created_at') DateTime createdAt,
+      PlainUserModel author,
       List<TagsModel> tags,
       IconModel icon,
-      bool isAnonymous,
       double latitude,
       double longitude,
       String location});
 
-  $UserModelCopyWith<$Res> get author;
+  $PlainUserModelCopyWith<$Res> get author;
   $IconModelCopyWith<$Res> get icon;
 }
 
@@ -123,7 +119,6 @@ class _$PostModelCopyWithImpl<$Res> implements $PostModelCopyWith<$Res> {
     Object? author = null,
     Object? tags = null,
     Object? icon = null,
-    Object? isAnonymous = null,
     Object? latitude = null,
     Object? longitude = null,
     Object? location = null,
@@ -148,7 +143,7 @@ class _$PostModelCopyWithImpl<$Res> implements $PostModelCopyWith<$Res> {
       author: null == author
           ? _self.author
           : author // ignore: cast_nullable_to_non_nullable
-              as UserModel,
+              as PlainUserModel,
       tags: null == tags
           ? _self.tags
           : tags // ignore: cast_nullable_to_non_nullable
@@ -157,10 +152,6 @@ class _$PostModelCopyWithImpl<$Res> implements $PostModelCopyWith<$Res> {
           ? _self.icon
           : icon // ignore: cast_nullable_to_non_nullable
               as IconModel,
-      isAnonymous: null == isAnonymous
-          ? _self.isAnonymous
-          : isAnonymous // ignore: cast_nullable_to_non_nullable
-              as bool,
       latitude: null == latitude
           ? _self.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
@@ -180,8 +171,8 @@ class _$PostModelCopyWithImpl<$Res> implements $PostModelCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $UserModelCopyWith<$Res> get author {
-    return $UserModelCopyWith<$Res>(_self.author, (value) {
+  $PlainUserModelCopyWith<$Res> get author {
+    return $PlainUserModelCopyWith<$Res>(_self.author, (value) {
       return _then(_self.copyWith(author: value));
     });
   }
@@ -204,11 +195,10 @@ class _PostModel implements PostModel {
       {required this.id,
       required this.title,
       required this.content,
-      required this.createdAt,
+      @JsonKey(name: 'created_at') required this.createdAt,
       required this.author,
       required final List<TagsModel> tags,
       required this.icon,
-      required this.isAnonymous,
       required this.latitude,
       required this.longitude,
       required this.location})
@@ -223,9 +213,10 @@ class _PostModel implements PostModel {
   @override
   final String content;
   @override
+  @JsonKey(name: 'created_at')
   final DateTime createdAt;
   @override
-  final UserModel author;
+  final PlainUserModel author;
   final List<TagsModel> _tags;
   @override
   List<TagsModel> get tags {
@@ -236,8 +227,6 @@ class _PostModel implements PostModel {
 
   @override
   final IconModel icon;
-  @override
-  final bool isAnonymous;
   @override
   final double latitude;
   @override
@@ -273,8 +262,6 @@ class _PostModel implements PostModel {
             (identical(other.author, author) || other.author == author) &&
             const DeepCollectionEquality().equals(other._tags, _tags) &&
             (identical(other.icon, icon) || other.icon == icon) &&
-            (identical(other.isAnonymous, isAnonymous) ||
-                other.isAnonymous == isAnonymous) &&
             (identical(other.latitude, latitude) ||
                 other.latitude == latitude) &&
             (identical(other.longitude, longitude) ||
@@ -294,14 +281,13 @@ class _PostModel implements PostModel {
       author,
       const DeepCollectionEquality().hash(_tags),
       icon,
-      isAnonymous,
       latitude,
       longitude,
       location);
 
   @override
   String toString() {
-    return 'PostModel(id: $id, title: $title, content: $content, createdAt: $createdAt, author: $author, tags: $tags, icon: $icon, isAnonymous: $isAnonymous, latitude: $latitude, longitude: $longitude, location: $location)';
+    return 'PostModel(id: $id, title: $title, content: $content, createdAt: $createdAt, author: $author, tags: $tags, icon: $icon, latitude: $latitude, longitude: $longitude, location: $location)';
   }
 }
 
@@ -317,17 +303,16 @@ abstract mixin class _$PostModelCopyWith<$Res>
       {int id,
       String title,
       String content,
-      DateTime createdAt,
-      UserModel author,
+      @JsonKey(name: 'created_at') DateTime createdAt,
+      PlainUserModel author,
       List<TagsModel> tags,
       IconModel icon,
-      bool isAnonymous,
       double latitude,
       double longitude,
       String location});
 
   @override
-  $UserModelCopyWith<$Res> get author;
+  $PlainUserModelCopyWith<$Res> get author;
   @override
   $IconModelCopyWith<$Res> get icon;
 }
@@ -351,7 +336,6 @@ class __$PostModelCopyWithImpl<$Res> implements _$PostModelCopyWith<$Res> {
     Object? author = null,
     Object? tags = null,
     Object? icon = null,
-    Object? isAnonymous = null,
     Object? latitude = null,
     Object? longitude = null,
     Object? location = null,
@@ -376,7 +360,7 @@ class __$PostModelCopyWithImpl<$Res> implements _$PostModelCopyWith<$Res> {
       author: null == author
           ? _self.author
           : author // ignore: cast_nullable_to_non_nullable
-              as UserModel,
+              as PlainUserModel,
       tags: null == tags
           ? _self._tags
           : tags // ignore: cast_nullable_to_non_nullable
@@ -385,10 +369,6 @@ class __$PostModelCopyWithImpl<$Res> implements _$PostModelCopyWith<$Res> {
           ? _self.icon
           : icon // ignore: cast_nullable_to_non_nullable
               as IconModel,
-      isAnonymous: null == isAnonymous
-          ? _self.isAnonymous
-          : isAnonymous // ignore: cast_nullable_to_non_nullable
-              as bool,
       latitude: null == latitude
           ? _self.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
@@ -408,8 +388,8 @@ class __$PostModelCopyWithImpl<$Res> implements _$PostModelCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $UserModelCopyWith<$Res> get author {
-    return $UserModelCopyWith<$Res>(_self.author, (value) {
+  $PlainUserModelCopyWith<$Res> get author {
+    return $PlainUserModelCopyWith<$Res>(_self.author, (value) {
       return _then(_self.copyWith(author: value));
     });
   }

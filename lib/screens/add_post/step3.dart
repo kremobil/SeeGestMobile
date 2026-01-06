@@ -312,7 +312,7 @@ class _Step3State extends ConsumerState<Step3> {
                       duration: Duration(seconds: 10),
                     ));
 
-                    Navigator.of(context).pop();
+                    Navigator.pushNamed(context, '/home');
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         content: Text(

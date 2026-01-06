@@ -1,9 +1,19 @@
 import 'package:SeeGestMobileApp/classes/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class HomepageCalendar extends StatefulWidget {
-  const HomepageCalendar({super.key});
+  const HomepageCalendar({
+    super.key,
+    this.onDaySelected,
+    this.onPageChanged,
+    required this.postsDates,
+  });
+
+  final Function(DateTime)? onDaySelected;
+  final Function(DateTime)? onPageChanged;
+  final List<DateTime> postsDates;
 
   @override
   State<HomepageCalendar> createState() => _HomepageCalendarState();
@@ -13,16 +23,9 @@ class _HomepageCalendarState extends State<HomepageCalendar> {
   DateTime _selectedDay = DateTime.now();
   DateTime _focusedDay = DateTime.now(); // Initialize focusedDay
 
-  final List<DateTime> _postsDatesList = [
-    DateTime(2025, 5, 20),
-    DateTime(2025, 5, 26), // dzisiaj
-    DateTime(2025, 5, 28),
-    DateTime(2025, 6, 5),
-  ];
-
   // Pomocnicza funkcja do sprawdzania czy data ma posty
   bool _hasPostsForDay(DateTime day) {
-    return _postsDatesList.any((postDate) =>
+    return widget.postsDates.any((postDate) =>
         postDate.year == day.year &&
         postDate.month == day.month &&
         postDate.day == day.day);
@@ -30,6 +33,7 @@ class _HomepageCalendarState extends State<HomepageCalendar> {
 
   @override
   Widget build(BuildContext context) {
+    print(widget.postsDates);
     return Container(
       padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
@@ -166,17 +170,19 @@ class _HomepageCalendarState extends State<HomepageCalendar> {
             return Container(
               margin: EdgeInsets.all(6.0),
               decoration: BoxDecoration(
-                gradient: hasPost ? AppColors.primaryGradient : null,
-                borderRadius: BorderRadius.circular(8.0),
-                border:  isToday ? Border.all(
-                  color: AppColors.grey,
-                  width: 2.0,
-                ) : null
-              ),
+                  gradient: hasPost ? AppColors.primaryGradient : null,
+                  borderRadius: BorderRadius.circular(8.0),
+                  border: isToday
+                      ? Border.all(
+                          color: AppColors.grey,
+                          width: 2.0,
+                        )
+                      : null),
               child: Center(
                 child: Text(
                   '${day.day}',
-                  style: TextStyle(color: hasPost ? Colors.white : AppColors.grey),
+                  style:
+                      TextStyle(color: hasPost ? Colors.white : AppColors.grey),
                 ),
               ),
             );
@@ -191,9 +197,17 @@ class _HomepageCalendarState extends State<HomepageCalendar> {
             _selectedDay = selectedDay;
             _focusedDay = focusedDay; // update `_focusedDay` here as well
           });
+
+          if (widget.onDaySelected != null) {
+            widget.onDaySelected!(selectedDay);
+          }
         },
         onPageChanged: (focusedDay) {
           _focusedDay = focusedDay;
+
+          if (widget.onPageChanged != null) {
+            widget.onPageChanged!(focusedDay);
+          }
         },
       ),
     );

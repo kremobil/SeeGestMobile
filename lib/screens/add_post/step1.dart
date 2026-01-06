@@ -2,6 +2,7 @@ import 'package:SeeGestMobileApp/models/icon.dart';
 import 'package:SeeGestMobileApp/models/tags.dart';
 import 'package:SeeGestMobileApp/screens/add_post/add_post_calendar.dart';
 import 'package:SeeGestMobileApp/screens/add_post/icon_select_input.dart';
+import 'package:SeeGestMobileApp/shared/dynamic_dropdown_expander.dart';
 import 'package:SeeGestMobileApp/shared/styled_button.dart';
 import 'package:SeeGestMobileApp/shared/styled_input.dart';
 import 'package:SeeGestMobileApp/shared/styled_text.dart';

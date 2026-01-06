@@ -10,9 +10,9 @@ sealed class PlainCommentModel with _$PlainCommentModel {
   const factory PlainCommentModel({
     required int id,
     required String content,
-    required DateTime createdAt,
+    @JsonKey(name: 'created_at') required DateTime createdAt,
     required int depth,
-    required bool isAnonymous
+    @JsonKey(name: 'is_anonymous') required bool isAnonymous
   }) = _PlainCommentModel;
 
   factory PlainCommentModel.fromJson(Map<String, dynamic> json) => _$PlainCommentModelFromJson(json);
@@ -23,13 +23,13 @@ sealed class CommentModel with _$CommentModel {
   const factory CommentModel({
     required int id,
     required String content,
-    required DateTime createdAt,
+    @JsonKey(name: 'created_at') required DateTime createdAt,
     required UserModel author,
     required PostModel post,
-    required PlainCommentModel parentComment,
+    @JsonKey(name: 'parent_comment') required PlainCommentModel parentComment,
     required List<CommentModel> replies,
     required int depth,
-    required bool isAnonymous,
+    @JsonKey(name: 'is_anonymous') required bool isAnonymous,
     required String path,
   }) = _CommentModel;
 
