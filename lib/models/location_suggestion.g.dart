@@ -34,8 +34,9 @@ Map<String, dynamic> _$TextInfoModelToJson(_TextInfoModel instance) =>
 _StructuredFormatModel _$StructuredFormatModelFromJson(
         Map<String, dynamic> json) =>
     _StructuredFormatModel(
-      mainText:
-          TextInfoModel.fromJson(json['mainText'] as Map<String, dynamic>),
+      mainText: json['mainText'] == null
+          ? null
+          : TextInfoModel.fromJson(json['mainText'] as Map<String, dynamic>),
       secondaryText: json['secondaryText'] == null
           ? null
           : TextInfoModel.fromJson(

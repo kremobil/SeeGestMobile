@@ -46,6 +46,7 @@ class _HomepageScreenState extends ConsumerState<HomepageScreen> {
     super.initState();
 
     LocationController.getCurrentLatLng().then((latlng) {
+      if (!mounted) return;
       setState(() {
         latitude = latlng.latitude;
         longitude = latlng.longitude;

@@ -31,8 +31,8 @@ sealed class TextInfoModel with _$TextInfoModel {
 @freezed
 sealed class StructuredFormatModel with _$StructuredFormatModel {
   const factory StructuredFormatModel({
-    required TextInfoModel mainText,
-    TextInfoModel? secondaryText,  // Make this optional
+    TextInfoModel? mainText,
+    TextInfoModel? secondaryText,
   }) = _StructuredFormatModel;
 
   factory StructuredFormatModel.fromJson(Map<String, dynamic> json) => 

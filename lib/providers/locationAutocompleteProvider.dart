@@ -12,11 +12,9 @@ Future<List<LocationSuggestionModel>> locationAutocomplete(
   required double latitude,
   required double longitude,
 }) async {
-  // Debounce - poczekaj 300ms
+  // Debounce to limit API calls
   await Future.delayed(const Duration(milliseconds: 300));
-  
-  // Sprawdź czy query się nie zmienił w międzyczasie
-  // (Riverpod automatycznie anuluje stare requesty)
+
 
   if (query.trim() == "") return [];
 

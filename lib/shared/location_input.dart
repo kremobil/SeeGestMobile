@@ -9,6 +9,7 @@ import 'package:SeeGestMobileApp/shared/dynamic_dropdown_expander.dart';
 import 'package:SeeGestMobileApp/shared/styled_input.dart';
 import 'package:SeeGestMobileApp/shared/styled_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -68,6 +69,7 @@ class _LocationInputState extends ConsumerState<LocationInput> {
     // TODO: implement initState
     super.initState();
 
+
     _locationSearchController.addListener(() {
       setState(() {
         _currentQuery = _locationSearchController.text;
@@ -77,6 +79,7 @@ class _LocationInputState extends ConsumerState<LocationInput> {
     LocationController.requestLocationPermission(context);
 
     LocationController.getCurrentLatLng().then((position) {
+      if (!mounted) return;
       setState(() {
         _initialPosition = position;
       });
@@ -422,7 +425,7 @@ class AutoCompleteContianer extends ConsumerWidget {
                             spacing: 2.0,
                             children: [
                               Text(
-                                suggestion.structuredFormat.mainText.text,
+                                suggestion.structuredFormat.mainText?.text ?? "Błąd Wyszukiwania",
                                 overflow: TextOverflow.ellipsis,
                                 style: GoogleFonts.lato(
                                     fontSize: 14, color: AppColors.mainColor),

@@ -18,7 +18,9 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Ensure Flutter is initialized
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform); // Initialize Firebase
+  await Firebase.initializeApp(
+    name: "SeeGests",
+    options: DefaultFirebaseOptions.currentPlatform); // Initialize Firebase
 
   await SentryFlutter.init(
     (options) {

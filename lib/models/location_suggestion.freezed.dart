@@ -350,7 +350,7 @@ class __$TextInfoModelCopyWithImpl<$Res>
 
 /// @nodoc
 mixin _$StructuredFormatModel {
-  TextInfoModel get mainText;
+  TextInfoModel? get mainText;
   TextInfoModel? get secondaryText;
 
   /// Create a copy of StructuredFormatModel
@@ -391,9 +391,9 @@ abstract mixin class $StructuredFormatModelCopyWith<$Res> {
           $Res Function(StructuredFormatModel) _then) =
       _$StructuredFormatModelCopyWithImpl;
   @useResult
-  $Res call({TextInfoModel mainText, TextInfoModel? secondaryText});
+  $Res call({TextInfoModel? mainText, TextInfoModel? secondaryText});
 
-  $TextInfoModelCopyWith<$Res> get mainText;
+  $TextInfoModelCopyWith<$Res>? get mainText;
   $TextInfoModelCopyWith<$Res>? get secondaryText;
 }
 
@@ -410,14 +410,14 @@ class _$StructuredFormatModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? mainText = null,
+    Object? mainText = freezed,
     Object? secondaryText = freezed,
   }) {
     return _then(_self.copyWith(
-      mainText: null == mainText
+      mainText: freezed == mainText
           ? _self.mainText
           : mainText // ignore: cast_nullable_to_non_nullable
-              as TextInfoModel,
+              as TextInfoModel?,
       secondaryText: freezed == secondaryText
           ? _self.secondaryText
           : secondaryText // ignore: cast_nullable_to_non_nullable
@@ -429,8 +429,12 @@ class _$StructuredFormatModelCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $TextInfoModelCopyWith<$Res> get mainText {
-    return $TextInfoModelCopyWith<$Res>(_self.mainText, (value) {
+  $TextInfoModelCopyWith<$Res>? get mainText {
+    if (_self.mainText == null) {
+      return null;
+    }
+
+    return $TextInfoModelCopyWith<$Res>(_self.mainText!, (value) {
       return _then(_self.copyWith(mainText: value));
     });
   }
@@ -453,12 +457,12 @@ class _$StructuredFormatModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _StructuredFormatModel implements StructuredFormatModel {
-  const _StructuredFormatModel({required this.mainText, this.secondaryText});
+  const _StructuredFormatModel({this.mainText, this.secondaryText});
   factory _StructuredFormatModel.fromJson(Map<String, dynamic> json) =>
       _$StructuredFormatModelFromJson(json);
 
   @override
-  final TextInfoModel mainText;
+  final TextInfoModel? mainText;
   @override
   final TextInfoModel? secondaryText;
 
@@ -507,10 +511,10 @@ abstract mixin class _$StructuredFormatModelCopyWith<$Res>
       __$StructuredFormatModelCopyWithImpl;
   @override
   @useResult
-  $Res call({TextInfoModel mainText, TextInfoModel? secondaryText});
+  $Res call({TextInfoModel? mainText, TextInfoModel? secondaryText});
 
   @override
-  $TextInfoModelCopyWith<$Res> get mainText;
+  $TextInfoModelCopyWith<$Res>? get mainText;
   @override
   $TextInfoModelCopyWith<$Res>? get secondaryText;
 }
@@ -528,14 +532,14 @@ class __$StructuredFormatModelCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? mainText = null,
+    Object? mainText = freezed,
     Object? secondaryText = freezed,
   }) {
     return _then(_StructuredFormatModel(
-      mainText: null == mainText
+      mainText: freezed == mainText
           ? _self.mainText
           : mainText // ignore: cast_nullable_to_non_nullable
-              as TextInfoModel,
+              as TextInfoModel?,
       secondaryText: freezed == secondaryText
           ? _self.secondaryText
           : secondaryText // ignore: cast_nullable_to_non_nullable
@@ -547,8 +551,12 @@ class __$StructuredFormatModelCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $TextInfoModelCopyWith<$Res> get mainText {
-    return $TextInfoModelCopyWith<$Res>(_self.mainText, (value) {
+  $TextInfoModelCopyWith<$Res>? get mainText {
+    if (_self.mainText == null) {
+      return null;
+    }
+
+    return $TextInfoModelCopyWith<$Res>(_self.mainText!, (value) {
       return _then(_self.copyWith(mainText: value));
     });
   }
